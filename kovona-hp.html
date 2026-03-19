@@ -85,7 +85,8 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: #525252;
+      background: #F4F4F4;
+      border-bottom: 1px solid #DDDDDD;
       height: 80px;
       display: flex;
       align-items: center;
@@ -93,7 +94,7 @@
     }
 
     .nav-logo {
-      color: #FFF;
+      color: #1A1A1A;
       font-weight: 800;
       font-size: 1.25rem;
       letter-spacing: 0.08em;
@@ -106,7 +107,7 @@
       font-weight: 400;
       font-size: 0.6rem;
       letter-spacing: 0.22em;
-      color: #BBB;
+      color: #888;
       display: block;
     }
 
@@ -125,7 +126,7 @@
     }
 
     .nav-link {
-      color: #DDD;
+      color: #444;
       font-size: 0.95rem;
       font-weight: 500;
       padding: 0 18px;
@@ -134,7 +135,7 @@
       align-items: center;
       white-space: nowrap;
     }
-    .nav-link:hover { color: #FFF; background: #474747; }
+    .nav-link:hover { color: #1A1A1A; background: #E8E8E8; }
 
     /* Mega menu */
     .mega-menu {
@@ -142,8 +143,9 @@
       position: absolute;
       top: 80px;
       left: 0;
-      background: #4A4A4A;
-      border-top: 1px solid #666;
+      background: #F0F0F0;
+      border: 1px solid #DDDDDD;
+      border-top: none;
       padding: 32px 36px;
       min-width: 440px;
       z-index: 999;
@@ -157,7 +159,7 @@
     }
     .mega-col:last-child { padding-right: 0; }
     .mega-col h4 {
-      color: #AAA;
+      color: #888;
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
@@ -166,11 +168,11 @@
     }
     .mega-col a {
       display: block;
-      color: #CCC;
+      color: #444;
       font-size: 0.9rem;
       padding: 6px 0;
     }
-    .mega-col a:hover { color: #FFF; }
+    .mega-col a:hover { color: #1A1A1A; }
 
     .nav-right {
       display: flex;
@@ -182,10 +184,10 @@
 
     .lang-switch {
       font-size: 0.85rem;
-      color: #999;
+      color: #888;
       letter-spacing: 0.05em;
     }
-    .lang-switch .active { color: #FFF; }
+    .lang-switch .active { color: #1A1A1A; }
 
     /* ===== HERO ===== */
     .hero {
@@ -193,8 +195,8 @@
       background: #A0A0A0;
       position: relative;
       display: flex;
-      align-items: flex-end;
-      padding: 0 80px 160px;
+      align-items: center;
+      padding: 0 80px 60px;
     }
 
     .hero-bg {
@@ -274,11 +276,10 @@
 
     .bu-card-body {
       padding: 20px 0 28px;
-      border-top: 1px solid #E0E0E0;
       margin-top: 16px;
     }
     .bu-card-body h3 {
-      font-size: 1.1rem;
+      font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 10px;
     }
@@ -302,13 +303,117 @@
       text-align: center;
     }
 
-    .production-label {
+    .production-heading {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1A1A1A;
+      margin-bottom: 56px;
+    }
+
+    /* ===== REFERENCE KARUSEL ===== */
+    .references {
+      background: #FFFFFF;
+      padding: 96px 56px;
+      text-align: center;
+    }
+
+    .references-label {
       font-size: 0.75rem;
       color: #888;
       text-transform: uppercase;
       letter-spacing: 0.14em;
+      margin-bottom: 12px;
+    }
+
+    .references h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1A1A1A;
       margin-bottom: 56px;
     }
+
+    .carousel-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .carousel-card {
+      background: #FFF;
+      border: 1px solid #CCCCCC;
+      width: 52%;
+      padding: 40px;
+      text-align: left;
+      display: flex;
+      gap: 36px;
+      align-items: flex-start;
+    }
+
+    .carousel-logo {
+      width: 128px;
+      height: 88px;
+      background: #EBEBEB;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-body {
+      flex: 1;
+    }
+
+    .carousel-quote {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .carousel-attribution {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #555;
+    }
+
+    .carousel-attribution span {
+      font-weight: 400;
+      color: #888;
+    }
+
+    .carousel-btn {
+      background: none;
+      border: 1px solid #CCCCCC;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: inherit;
+    }
+    .carousel-btn:hover { background: #EBEBEB; }
+
+    .carousel-dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 28px;
+    }
+
+    .carousel-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #CCC;
+      cursor: pointer;
+    }
+    .carousel-dot.active { background: #555; }
 
     .stats {
       display: flex;
@@ -554,7 +659,6 @@
       </svg>
     </div>
     <div class="hero-content">
-      <p class="hero-label">Český Těšín · od roku 1904</p>
       <h1 class="hero-headline">Kovovýroba od roku 1904.<br>v&nbsp;Českém Těšíně.</h1>
       <p class="hero-subline">Dodáváme regálové systémy, ocelové profily a&nbsp;zakázkovou kovovýrobu pro globální značky.</p>
       <div class="hero-ctas">
@@ -619,7 +723,7 @@
 
   <!-- VÝROBNÍ SÍLA -->
   <section class="production">
-    <p class="production-label">Vše in-house · Český Těšín</p>
+    <h2 class="production-heading">Proč se spojit právě s&nbsp;námi?</h2>
     <div class="stats">
       <div class="stat-item">
         <span class="stat-value">50 000 m²</span>
@@ -638,8 +742,36 @@
         <span class="stat-label">rok založení</span>
       </div>
     </div>
-    <p class="production-text">Vše navrhujeme, vyrábíme a&nbsp;dodáváme pod jednou střechou v&nbsp;Českém Těšíně.</p>
+    <p class="production-text">Tváříme, svařujeme, lakujeme, lisujeme. Celý výrobní řetězec zvládáme <span style="white-space:nowrap">in-house</span> a každou zakázku bereme jako svoji vlastní.</p>
     <a href="#" class="production-cta" onclick="navClick(event, 'O společnosti')">O&nbsp;společnosti →</a>
+  </section>
+
+  <!-- REFERENCE KARUSEL -->
+  <section class="references">
+    <h2>Co říkají naši partneři</h2>
+
+    <div class="carousel-wrapper">
+      <button class="carousel-btn" id="prev-ref" aria-label="Předchozí">←</button>
+
+      <div class="carousel-card" id="carousel-card">
+        <div class="carousel-logo" id="carousel-logo">
+          <!-- Logo placeholder -->
+          <svg width="64" height="40" viewBox="0 0 64 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="62" height="38" rx="3" stroke="#AAAAAA" stroke-width="1.5" fill="none"/>
+            <rect x="10" y="12" width="44" height="6" rx="2" fill="#BBBBBB"/>
+            <rect x="18" y="22" width="28" height="4" rx="2" fill="#CCCCCC"/>
+          </svg>
+        </div>
+        <div class="carousel-body">
+          <p class="carousel-quote" id="carousel-quote"></p>
+          <p class="carousel-attribution" id="carousel-attr"></p>
+        </div>
+      </div>
+
+      <button class="carousel-btn" id="next-ref" aria-label="Další">→</button>
+    </div>
+
+    <div class="carousel-dots" id="carousel-dots"></div>
   </section>
 
   <!-- CTA BANNER -->
@@ -701,6 +833,66 @@
 </div><!-- /homepage -->
 
 <script>
+  /* ===== REFERENCE KARUSEL ===== */
+  const references = [
+    {
+      quote: "Kovona System nám dodává přesně to, co potřebujeme — spolehlivě, včas a v&nbsp;požadované kvalitě. Za deset let spolupráce jsme neměli důvod hledat jiného dodavatele.",
+      name: "Jan Kovář",
+      company: "Procurement Manager · Global Retail Partner"
+    },
+    {
+      quote: "Oceňujeme flexibilitu a&nbsp;schopnost Kovony reagovat na změny v&nbsp;objemech zakázek. Pro naše automotive projekty je to klíčová vlastnost každého dodavatele.",
+      name: "Marie Horáková",
+      company: "Head of Supply Chain · Automotive Tier 1"
+    },
+    {
+      quote: "S&nbsp;Kovonou spolupracujeme na zakázkové výrobě ocelových profilů. Technická úroveň i&nbsp;dodržování termínů jsou na velmi vysoké úrovni.",
+      name: "Thomas Weber",
+      company: "CEO · Německý distributor stavebních komponentů"
+    },
+    {
+      quote: "Regálové systémy Kovona System jsou páteří naší logistiky. Robustní konstrukce, přesné rozměry, žádné reklamace — to je pro nás standard, který Kovona naplňuje.",
+      name: "Petr Šimánek",
+      company: "Operations Director · Intralogistika CZ"
+    }
+  ];
+
+  let currentRef = 0;
+
+  function renderRef(index) {
+    const r = references[index];
+    document.getElementById('carousel-quote').innerHTML = '\u201e' + r.quote + '\u201c';
+    document.getElementById('carousel-attr').innerHTML =
+      '<strong>' + r.name + '</strong> <span>· ' + r.company + '</span>';
+    document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+      d.classList.toggle('active', i === index);
+    });
+  }
+
+  function buildDots() {
+    const container = document.getElementById('carousel-dots');
+    references.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => { currentRef = i; renderRef(i); });
+      container.appendChild(dot);
+    });
+  }
+
+  buildDots();
+  renderRef(0);
+
+  document.getElementById('prev-ref').addEventListener('click', () => {
+    currentRef = (currentRef - 1 + references.length) % references.length;
+    renderRef(currentRef);
+  });
+
+  document.getElementById('next-ref').addEventListener('click', () => {
+    currentRef = (currentRef + 1) % references.length;
+    renderRef(currentRef);
+  });
+
+  /* ===== NAV ===== */
   function navClick(event, section) {
     event.preventDefault();
     event.stopPropagation();
