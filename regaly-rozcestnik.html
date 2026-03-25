@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regálové systémy — Kovona System</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1A1A1A; background: #F4F4F4; line-height: 1.5; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Navigace Placeholder (Stejná jako detail) */
+    .nav-placeholder { background: #FFF; border-bottom: 1px solid #DDD; padding: 20px 56px; display: flex; align-items: center; }
+    .logo { font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1.1; }
+    .logo span { font-weight: 400; color: #888; font-size: 0.65rem; display: block; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* Sjednocená Drobečkovka */
+    .breadcrumb { padding: 24px 56px 0; font-size: 0.8rem; color: #888; background: #F4F4F4; }
+    .breadcrumb a:hover { color: #1A1A1A; text-decoration: underline; }
+
+    /* RENAULT STYLE HERO */
+    .hero-container { position: relative; height: 500px; background: #E0E0E0; display: flex; align-items: center; padding: 0 56px; margin-top: 10px; }
+    .hero-box { background: #FFF; padding: 48px; max-width: 520px; border: 1px solid #DDD; }
+    .hero-box h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .hero-box p { font-size: 1rem; color: #555; line-height: 1.6; }
+
+    /* TABS NAV */
+    .tabs-wrapper { border-bottom: 1px solid #DDD; background: #FFF; position: sticky; top: 0; z-index: 100; }
+    .tabs { display: flex; padding: 0 56px; gap: 60px; }
+    .tab { padding: 24px 0; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+    .tab-title { display: block; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: #AAA; letter-spacing: 0.05em; }
+    .tab-sub { display: block; font-size: 0.75rem; font-weight: 500; color: #BBB; margin-top: 4px; }
+    
+    .tab.active { border-bottom-color: #1A1A1A; }
+    .tab.active .tab-title { color: #1A1A1A; }
+    .tab.active .tab-sub { color: #888; }
+
+    /* GRID SECTION */
+    .content-section { padding: 64px 56px 80px; max-width: 1440px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    
+    .card { background: #FFF; border: 1px solid #DDD; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .card:hover { border-color: #1A1A1A; transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+    
+    .card-img { height: 300px; background: #F0F0F0; display: flex; align-items: center; justify-content: center; color: #BBB; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #EEE; }
+    
+    .card-body { padding: 32px; }
+    .card-tag { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #AAA; margin-bottom: 12px; display: block; letter-spacing: 0.1em; }
+    .card h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 800; }
+    .card p { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 24px; height: 70px; overflow: hidden; }
+    .card-link { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #1A1A1A; padding-bottom: 2px; }
+
+    /* Placeholder Patička */
+    footer { background: #F4F4F4; border-top: 1px solid #DDD; padding: 40px 56px; margin-top: 40px; font-size: 0.8rem; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-placeholder">
+    <div class="logo" onclick="window.location.href='kovona-hp.html'">
+      KOVONA <span>SYSTEM</span>
+    </div>
+  </nav>
+
+  <nav class="breadcrumb">
+    <a href="kovona-hp.html">Domů</a> / Regálové systémy
+  </nav>
+
+  <section class="hero-container">
+    <div class="hero-box">
+      <h1>Regály, které přežijí generace</h1>
+      <p>Od precizních interiérových systémů po robustní průmyslová řešení. Navrženo a vyrobeno v České republice s tradicí od roku 1904.</p>
+    </div>
+  </section>
+
+  <div class="tabs-wrapper">
+    <div class="tabs">
+      <div class="tab active">
+        <span class="tab-title">Domácnost & DIY</span>
+        <span class="tab-sub">Designové a hobby regály</span>
+      </div>
+      <div class="tab">
+        <span class="tab-title">Sklady & Profi</span>
+        <span class="tab-sub">Obchody, archivy a dílny</span>
+      </div>
+      <div class="tab">
+        <span class="tab-title">Průmysl & Heavy</span>
+        <span class="tab-sub">Logistika a velkokapacitní sklady</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="content-section">
+    <div class="grid">
+      <a href="regaly-elegant.html" class="card">
+        <div class="card-img">PRODUKTOVÉ FOTO: ELEGANT</div>
+        <div class="card-body">
+          <span class="card-tag">Bezšroubové / Modular</span>
+          <h3>Řada Elegant</h3>
+          <p>Prémiový modulární systém pro moderní interiéry. Unikátní skryté spoje a vysoká variabilita.</p>
+          <span class="card-link">Konfigurovat model</span>
+        </div>
+      </a>
+      
+      <div class="card">
+        <div class="card-img">PRODUKTOVÉ FOTO: PRAKTIK</div>
+        <div class="card-body">
+          <span class="card-tag">Šroubové / Klasik</span>
+          <h3>Řada Praktik</h3>
+          <p>Funkční a odolné řešení pro každodenní pořádek v domácí dílně či sklepě.</p>
+          <span class="card-link">Zobrazit řadu</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-img">PRODUKTOVÉ FOTO: UNI</div>
+        <div class="card-body">
+          <span class="card-tag">Kovové / Standard</span>
+          <h3>Řada Uni</h3>
+          <p>Univerzální kovové regály s vysokou nosností pro všestranné použití.</p>
+          <span class="card-link">Zobrazit řadu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Kovona System, a.s. | <a href="kovona-hp.html" style="text-decoration: underline;">Návrat na hlavní stránku</a>
+  </footer>
+
+</body>
+</html>

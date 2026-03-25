@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail produktu: ELEGANT — Kovona System</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: system-ui, -apple-system, sans-serif; color: #1A1A1A; background: #F4F4F4; line-height: 1.5; }
+    a { text-decoration: none; color: inherit; }
+
+    /* Čistá navigace pouze s logem */
+    .nav-placeholder { background: #FFF; border-bottom: 1px solid #DDD; padding: 20px 56px; display: flex; align-items: center; }
+    .logo { font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1.1; }
+    .logo span { font-weight: 400; color: #888; font-size: 0.65rem; display: block; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    /* Drobečková navigace */
+    .breadcrumb { padding: 24px 56px 0; font-size: 0.8rem; color: #888; }
+    .breadcrumb a:hover { color: #1A1A1A; text-decoration: underline; }
+
+    /* Hlavní kontejner */
+    .container { max-width: 1440px; margin: 0 auto; padding: 24px 56px 80px; display: grid; grid-template-columns: 1fr 480px; gap: 64px; align-items: start; }
+
+    /* LEVÁ STRANA: GALERIE A SOUBORY */
+    .left-column { width: 100%; }
+    .main-image { width: 100%; height: 500px; background: #D8D8D8; border: 1px solid #CCC; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #999; font-size: 1.5rem; margin-bottom: 16px; }
+    .thumb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 48px; }
+    .thumb-item { aspect-ratio: 1; background: #EEE; border: 1px solid #CCC; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #BBB; font-size: 0.7rem; font-weight: 600; text-align: center; padding: 5px; }
+    .thumb-item.active { border-color: #1A1A1A; border-width: 2px; color: #1A1A1A; }
+
+    /* Dokumenty pod galerií */
+    .downloads-area { border-top: 1px solid #DDD; padding-top: 32px; }
+    .downloads-area h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; color: #888; }
+    .download-list { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .file-card { background: #FFF; border: 1px solid #EEE; padding: 16px; display: flex; align-items: center; gap: 12px; transition: border-color 0.2s; }
+    .file-card:hover { border-color: #1A1A1A; }
+    .file-icon { width: 32px; height: 32px; background: #1A1A1A; color: #FFF; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 800; }
+    .file-name { font-size: 0.85rem; font-weight: 600; }
+
+    /* PRAVÁ STRANA: KONFIGURÁTOR */
+    .config-panel h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 8px; line-height: 1.1; }
+    .tag { display: inline-block; background: #1A1A1A; color: #FFF; padding: 4px 10px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-bottom: 32px; }
+    
+    .config-section { margin-bottom: 32px; padding-top: 24px; border-top: 1px solid #DDD; }
+    .config-section h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; color: #888; margin-bottom: 16px; }
+
+    .option-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    .opt-btn { padding: 12px; border: 1px solid #CCC; background: #FFF; cursor: pointer; text-align: center; font-size: 0.9rem; transition: all 0.2s; }
+    .opt-btn.active { border-color: #1A1A1A; background: #1A1A1A; color: #FFF; font-weight: 600; }
+
+    .color-grid { display: flex; gap: 16px; }
+    .color-option { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; opacity: 0.5; transition: opacity 0.2s; }
+    .color-option.active { opacity: 1; }
+    .color-circle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #DDD; }
+
+    .addon-item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid #EEE; background: #FFF; margin-bottom: 8px; cursor: pointer; }
+    .addon-item input { width: 18px; height: 18px; accent-color: #1A1A1A; }
+
+    /* Souhrn poptávky */
+    .summary-box { background: #FFF; padding: 24px; border: 1px solid #1A1A1A; margin-top: 40px; }
+    #final-selection { font-weight: 700; font-size: 1.05rem; margin: 12px 0 24px 0; line-height: 1.4; }
+    .inquiry-btn { width: 100%; background: #1A1A1A; color: #FFF; border: none; padding: 18px; font-weight: 700; text-transform: uppercase; cursor: pointer; }
+
+    footer { background: #F4F4F4; border-top: 1px solid #DDD; padding: 40px 56px; margin-top: 40px; font-size: 0.8rem; color: #888; text-align: center; }
+  </style>
+</head>
+<body>
+
+  <nav class="nav-placeholder">
+    <div class="logo" onclick="window.location.href='kovona-hp.html'">
+      KOVONA <span>SYSTEM</span>
+    </div>
+  </nav>
+
+  <nav class="breadcrumb">
+    <a href="kovona-hp.html">Domů</a> / <a href="regaly-rozcestnik.html">Regálové systémy</a> / ELEGANT
+  </nav>
+
+  <div class="container">
+    
+    <div class="left-column">
+      <div class="main-image" id="main-view">HLAVNÍ PRODUKTOVÉ FOTO</div>
+      <div class="thumb-grid">
+        <div class="thumb-item active" onclick="changeImage('POHLED ZEPŘEDU', this)">NÁHLED 1</div>
+        <div class="thumb-item" onclick="changeImage('DETAIL SPOJE', this)">NÁHLED 2</div>
+        <div class="thumb-item" onclick="changeImage('KOMPOZICE V KANCELÁŘI', this)">NÁHLED 3</div>
+        <div class="thumb-item" onclick="changeImage('FOTO DOPLŇKŮ', this)">NÁHLED 4</div>
+      </div>
+
+      <div class="downloads-area">
+        <h3>Dokumentace a technické listy</h3>
+        <div class="download-list">
+          <a href="#" class="file-card">
+            <div class="file-icon">PDF</div>
+            <div class="file-name">Katalogový list ELEGANT</div>
+          </a>
+          <a href="#" class="file-card">
+            <div class="file-icon">PDF</div>
+            <div class="file-name">Návod k montáži</div>
+          </a>
+          <a href="#" class="file-card">
+            <div class="file-icon">DXF</div>
+            <div class="file-name">3D Model pro architekty</div>
+          </a>
+          <a href="#" class="file-card">
+            <div class="file-icon">PDF</div>
+            <div class="file-name">Certifikace nosnosti</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="config-panel">
+      <span class="tag">Variabilní systém</span>
+      <h1>Regál ELEGANT</h1>
+      <p style="color: #666; margin-bottom: 32px;">Bezšroubový systém v antracitovém provedení. Sestavte si konfiguraci na míru.</p>
+
+      <div class="config-section">
+        <h3>Výška regálu</h3>
+        <div class="option-grid">
+          <div class="opt-btn active" onclick="updateConfig('vyska', '1800mm', this)">1800 mm</div>
+          <div class="opt-btn" onclick="updateConfig('vyska', '2000mm', this)">2000 mm</div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Počet polic</h3>
+        <div class="option-grid">
+          <div class="opt-btn active" onclick="updateConfig('police', '5 polic', this)">5 polic</div>
+          <div class="opt-btn" onclick="updateConfig('police', '6 polic', this)">6 polic</div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Barva konstrukce</h3>
+        <div class="color-grid">
+          <div class="color-option active" onclick="updateConfig('barva', 'Antracit', this)">
+            <div class="color-circle" style="background: #2D2E30;"></div>
+          </div>
+          <div class="color-option" onclick="updateConfig('barva', 'Bílá', this)">
+            <div class="color-circle" style="background: #FFF; border: 1px solid #DDD;"></div>
+          </div>
+          <div class="color-option" onclick="updateConfig('barva', 'Pozink', this)">
+            <div class="color-circle" style="background: #BCBEC0;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="config-section">
+        <h3>Doplňky</h3>
+        <label class="addon-item">
+          <input type="checkbox" onchange="updateAddons()">
+          <span>Přídavné háčky</span>
+        </label>
+        <label class="addon-item">
+          <input type="checkbox" onchange="updateAddons()">
+          <span>Dělící příčky</span>
+        </label>
+      </div>
+
+      <div class="summary-box">
+        <h4 style="font-size: 0.75rem; text-transform: uppercase; color: #888;">Vaše konfigurace:</h4>
+        <div id="final-selection">ELEGANT / 1800mm / 5 polic / Antracit / Bez doplňků</div>
+        <button class="inquiry-btn">Odeslat poptávku</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Kovona System, a.s. | <a href="kovona-hp.html" style="text-decoration: underline;">Zpět na hlavní stránku</a>
+  </footer>
+
+  <script>
+    let config = { vyska: '1800mm', police: '5 polic', barva: 'Antracit' };
+    let addons = [];
+
+    function updateConfig(type, value, element) {
+      config[type] = value;
+      const parent = element.parentElement;
+      parent.querySelectorAll('.opt-btn, .color-option').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+      renderSummary();
+    }
+
+    function updateAddons() {
+      addons = [];
+      document.querySelectorAll('.addon-item input:checked').forEach(input => {
+        addons.push(input.parentElement.querySelector('span').textContent);
+      });
+      renderSummary();
+    }
+
+    function renderSummary() {
+      const addonsText = addons.length > 0 ? ` + ${addons.join(', ')}` : ' / Bez doplňků';
+      document.getElementById('final-selection').textContent = `ELEGANT / ${config.vyska} / ${config.police} / ${config.barva}${addonsText}`;
+    }
+
+    function changeImage(text, element) {
+      document.getElementById('main-view').textContent = text;
+      document.querySelectorAll('.thumb-item').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+    }
+  </script>
+</body>
+</html>
