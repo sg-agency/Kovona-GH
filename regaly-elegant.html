@@ -162,7 +162,15 @@
     .cta-btn:hover { opacity: 0.85; }
     .cta-secondary { display: block; text-align: center; font-size: 0.76rem; color: #888; margin-top: 10px; text-decoration: underline; cursor: pointer; }
 
+    html { scroll-behavior: smooth; }
+
+    .section-tabs { display: flex; border-bottom: 2px solid #EBEBEB; margin-bottom: 24px; margin-top: 8px; }
+    .section-tab { font-size: 0.76rem; font-weight: 700; color: #888; padding: 10px 16px 10px 0; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
+    .section-tab:hover { color: #1A1A1A; }
+    .section-tab.active { color: #1A1A1A; border-bottom-color: #1A1A1A; }
+
     .downloads-section { border-top: 1px solid #EBEBEB; padding: 28px 36px 48px; background: #FFF; }
+    .spec-section { border-top: 1px solid #DDD; padding: 36px 36px 32px; background: #FFF; }
     .section-heading { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
     .section-sub { color: #666; font-size: 0.82rem; margin-bottom: 16px; }
     .downloads-grid { display: flex; flex-direction: column; gap: 6px; }
@@ -273,8 +281,15 @@
         </div>
       </div>
 
-      <div class="info-section">
-        <span class="info-section-label">Vyberte set</span>
+      <nav class="section-tabs">
+        <a href="#volba-setu" class="section-tab active">Volba setu</a>
+        <a href="#konfigurator" class="section-tab">Konfigurace</a>
+        <a href="#technicka-spec" class="section-tab">Technická specifikace</a>
+        <a href="#ke-stazeni" class="section-tab">Ke stažení</a>
+      </nav>
+
+      <div id="volba-setu" class="info-section">
+        <h2 class="section-heading">Volba setu</h2>
         <div class="set-list">
           <div class="set-row active" onclick="selectSet('Living Gallery',this)"><div class="set-row-left"><span class="set-row-name">Living Gallery</span><span class="set-row-sub">Deco panely + MDF police · obývák, jídelna, knihovna</span></div><span class="set-row-price">od 18 900 Kč</span></div>
           <div class="set-row" onclick="selectSet('Living Balance',this)"><div class="set-row-left"><span class="set-row-name">Living Balance</span><span class="set-row-sub">Deco panely + 1 zásuvkový modul · obývák, ložnice</span></div><span class="set-row-price">od 21 500 Kč</span></div>
@@ -284,23 +299,6 @@
           <div class="set-row" onclick="selectSet('Living Shelving',this)"><div class="set-row-left"><span class="set-row-name">Living Shelving</span><span class="set-row-sub">Čistý policový systém · obývák, pracovna, knihovna</span></div><span class="set-row-price">od 14 900 Kč</span></div>
           <div class="set-row" onclick="selectSet('Utility Shelving',this)"><div class="set-row-left"><span class="set-row-name">Utility Shelving</span><span class="set-row-sub">Full metal · spíž, technická místnost, garáž</span></div><span class="set-row-price">od 12 900 Kč</span></div>
         </div>
-      </div>
-
-      <div class="info-section">
-        <span class="info-section-label">Technické specifikace</span>
-        <table class="specs-mini">
-          <tr><td>Rozměr (š × v × h)</td><td>900 × 1960 × 450 mm</td></tr>
-          <tr><td>Povrch rámu</td><td>Matte Black</td></tr>
-          <tr><td>Spoj</td><td>Screwless rivet — bez šroubů, bez vrtání</td></tr>
-          <tr><td>Montáž</td><td>Bez nářadí · cca 15 min</td></tr>
-          <tr><td>Nosnost MDF police</td><td>250 kg / úroveň</td></tr>
-          <tr><td>Nosnost Metal / Mesh</td><td>150 kg / úroveň</td></tr>
-          <tr><td>Nosnost zásuvka</td><td>15 kg / zásuvka</td></tr>
-          <tr><td>Nosnost closet rail</td><td>15 kg</td></tr>
-          <tr><td>Nosnost háček</td><td>5 kg</td></tr>
-          <tr><td>Povrch MDF</td><td>Larch, Elm (+ custom na dotaz)</td></tr>
-          <tr><td>Záruka</td><td>10 let</td></tr>
-        </table>
       </div>
 
     </div>
@@ -385,7 +383,25 @@
       <a class="cta-secondary" href="#">Stáhnout katalog ELEGANT (PDF)</a>
     </div>
 
-    <div class="downloads-section">
+    <div id="technicka-spec" class="spec-section">
+      <h2 class="section-heading">Technická specifikace</h2>
+      <p class="section-sub">Rozměry, nosnosti a povrchové úpravy systému ELEGANT</p>
+      <table class="specs-mini">
+        <tr><td>Rozměr (š × v × h)</td><td>900 × 1960 × 450 mm</td></tr>
+        <tr><td>Povrch rámu</td><td>Matte Black</td></tr>
+        <tr><td>Spoj</td><td>Screwless rivet — bez šroubů, bez vrtání</td></tr>
+        <tr><td>Montáž</td><td>Bez nářadí · cca 15 min</td></tr>
+        <tr><td>Nosnost MDF police</td><td>250 kg / úroveň</td></tr>
+        <tr><td>Nosnost Metal / Mesh</td><td>150 kg / úroveň</td></tr>
+        <tr><td>Nosnost zásuvka</td><td>15 kg / zásuvka</td></tr>
+        <tr><td>Nosnost closet rail</td><td>15 kg</td></tr>
+        <tr><td>Nosnost háček</td><td>5 kg</td></tr>
+        <tr><td>Povrch MDF</td><td>Larch, Elm (+ custom na dotaz)</td></tr>
+        <tr><td>Záruka</td><td>10 let</td></tr>
+      </table>
+    </div>
+
+    <div id="ke-stazeni" class="downloads-section">
       <h2 class="section-heading">Ke stažení</h2>
       <p class="section-sub">Technické podklady, montážní dokumentace a certifikáty</p>
       <div class="downloads-grid">
@@ -484,6 +500,22 @@ function updateSummary(){
   document.getElementById('sum-qty').textContent='Po\u010det: '+qty+'\u00a0ks';
 }
 applySetRules('Living Gallery');
+
+// Active tab highlight on scroll
+(function(){
+  const tabEls = document.querySelectorAll('.section-tab');
+  const secIds = ['volba-setu','konfigurator','technicka-spec','ke-stazeni'];
+  function updateTabs(){
+    const scrollY = window.scrollY + 120;
+    let active = 0;
+    secIds.forEach((id,i)=>{
+      const el = document.getElementById(id);
+      if(el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = i;
+    });
+    tabEls.forEach((t,i)=>t.classList.toggle('active', i===active));
+  }
+  window.addEventListener('scroll', updateTabs, {passive:true});
+})();
 </script>
 </body>
 </html>
