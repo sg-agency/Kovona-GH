@@ -9,20 +9,28 @@
     body { font-family: system-ui, -apple-system, sans-serif; color: #1A1A1A; background: #F4F4F4; line-height: 1.5; }
     a { text-decoration: none; color: inherit; cursor: pointer; }
 
-    .nav-wrap { background: #F4F4F4; border-bottom: 1px solid #DDD; position: sticky; top: 0; z-index: 200; }
-    .nav { height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; max-width: 1440px; margin: 0 auto; }
-    .nav-logo { display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; }
-    .nav-logo-name { font-weight: 800; font-size: 1.2rem; letter-spacing: 0.1em; color: #1A1A1A; line-height: 1.1; }
-    .nav-logo-sub { font-size: 0.58rem; color: #888; letter-spacing: 0.22em; text-transform: uppercase; }
-    .nav-logo-insy { font-size: 0.72rem; color: #444; }
+    /* ===== STICKY NAV (sjednocená s HP) ===== */
+    .nav { position: sticky; top: 0; z-index: 1000; background: #F4F4F4; border-bottom: 1px solid #DDDDDD; height: 80px; display: flex; align-items: center; padding: 0 56px; }
+    .nav-logo { color: #1A1A1A; font-weight: 800; font-size: 1.25rem; letter-spacing: 0.08em; margin-right: 72px; flex-shrink: 0; cursor: pointer; line-height: 1.15; display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo .logo-sub { font-weight: 400; font-size: 0.6rem; letter-spacing: 0.22em; color: #888; display: block; }
+    .nav-logo-insy { font-size: 0.72rem; color: #444; font-weight: 400; letter-spacing: 0; }
     .nav-logo-insy a { text-decoration: underline; color: #444; }
-    .nav-links { display: flex; align-items: center; height: 72px; padding-left: 64px; flex: 1; }
-    .nav-links a { padding: 0 16px; height: 72px; display: flex; align-items: center; font-size: 0.95rem; color: #444; white-space: nowrap; }
-    .nav-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
     .nav-social { display: flex; gap: 8px; align-items: center; }
     .nav-social a { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
-    .nav-lang { font-size: 0.82rem; color: #1A1A1A; }
-    .nav-lang span { color: #888; }
+    .nav-items { display: flex; align-items: center; height: 80px; flex: 1; }
+    .nav-item { position: relative; height: 80px; display: flex; align-items: center; }
+    .nav-link { color: #444; font-size: 0.95rem; font-weight: 500; padding: 0 18px; height: 80px; display: flex; align-items: center; white-space: nowrap; }
+    .nav-link:hover { color: #1A1A1A; background: #E8E8E8; }
+    .mega-menu { display: none; position: absolute; top: 80px; left: 0; background: #F0F0F0; border: 1px solid #DDDDDD; border-top: none; padding: 32px 36px; min-width: 440px; z-index: 999; flex-direction: row; }
+    .nav-item:hover .mega-menu { display: flex; }
+    .mega-col { padding-right: 36px; min-width: 148px; }
+    .mega-col:last-child { padding-right: 0; }
+    .mega-col h4 { color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; font-weight: 600; }
+    .mega-col a { display: block; color: #444; font-size: 0.9rem; padding: 6px 0; }
+    .mega-col a:hover { color: #1A1A1A; }
+    .nav-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex-shrink: 0; }
+    .lang-switch { font-size: 0.85rem; color: #888; letter-spacing: 0.05em; }
+    .lang-switch .active { color: #1A1A1A; }
 
     /*
       LAYOUT: Both gallery and right panel sit on the same #F4F4F4 canvas.
@@ -45,7 +53,7 @@
       flex-direction: column;
       align-items: center;
       position: sticky;
-      top: 72px;
+      top: 80px;
       height: calc(100vh - 72px);
       /* breadcrumb-bar (~37px) scrolls away, gallery sticks just below nav */
       overflow: hidden;
@@ -180,26 +188,24 @@
     .dl-name { font-size: 0.8rem; font-weight: 700; display: block; margin-bottom: 1px; }
     .dl-size { font-size: 0.68rem; color: #888; }
 
-    .footer { background: #525252; padding: 56px 56px 0; }
-    .footer-inner { max-width: 1440px; margin: 0 auto; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 48px; padding-bottom: 48px; }
-    .footer-logo-name { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.06em; color: #EEE; margin-bottom: 4px; }
-    .footer-logo-desc { font-size: 0.82rem; color: #AAA; line-height: 1.65; margin-bottom: 16px; }
-    .footer-social-label { font-size: 0.82rem; font-weight: 700; color: #AAA; margin-bottom: 8px; }
-    .footer-social { display: flex; gap: 8px; padding-left: 8px; margin-bottom: 16px; }
-    .footer-social a { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
-    .footer-insy-label { font-size: 0.82rem; font-weight: 700; color: #AAA; margin-bottom: 6px; }
-    .footer-insy-list { list-style: none; padding-left: 12px; }
-    .footer-insy-list li { font-size: 0.74rem; color: #AAA; padding: 3px 0; position: relative; }
-    .footer-insy-list li::before { content: '·'; position: absolute; left: -10px; color: #888; }
-    .footer-insy-list strong { color: #DDD; font-size: 0.77rem; }
-    .footer-col-heading { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.13em; color: #AAA; margin-bottom: 16px; }
-    .footer-col a { display: block; font-size: 0.82rem; color: #DDD; padding: 4px 0; }
-    .footer-col a.sub { padding-left: 14px; color: #AAA; }
-    .footer-col address { font-style: normal; font-size: 0.84rem; color: #DDD; line-height: 1.9; margin-bottom: 8px; }
-    .footer-bottom { border-top: 1px solid #444; display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-    .footer-copy { font-size: 0.73rem; color: #AAA; }
-    .footer-lang { font-size: 0.76rem; color: #AAA; }
+    /* ===== FOOTER (sjednocená s HP) ===== */
+    footer { background: #525252; padding: 72px 56px 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; padding-bottom: 56px; }
+    .footer-logo { font-size: 1rem; font-weight: 800; color: #EEE; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .footer-tagline { font-size: 0.875rem; color: #999; line-height: 1.7; margin-bottom: 14px; }
+    .footer-group { font-size: 0.85rem; font-weight: 600; color: #AAA; margin-top: 32px; margin-bottom: 16px; }
+    .footer-group-list { list-style: none; padding: 0; margin: 0; }
+    .footer-group-list li { font-size: 0.8rem; color: #666; padding: 4px 0 4px 12px; position: relative; line-height: 1.5; }
+    .footer-group-list li::before { content: "·"; position: absolute; left: 0; color: #666; }
+    .footer-group-list li strong { color: #888; font-weight: 600; }
+    .footer-col h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.13em; color: #999; margin-bottom: 20px; font-weight: 600; }
+    .footer-col a { display: block; font-size: 0.875rem; color: #888; padding: 5px 0; }
+    .footer-col a:hover { color: #CCC; }
+    .footer-col a.sub { padding-left: 14px; font-size: 0.825rem; color: #777; }
+    .footer-col a.sub:hover { color: #AAA; }
+    .footer-contact p, .footer-contact address { font-size: 0.875rem; color: #888; line-height: 1.85; font-style: normal; }
+    .footer-bottom { border-top: 1px solid #444; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom span { font-size: 0.8rem; color: #777; }
 
     @media (max-width: 1024px) {
       .product-wrap { grid-template-columns: 1fr; }
@@ -211,30 +217,55 @@
 </head>
 <body>
 
-<div class="nav-wrap">
-  <nav class="nav">
-    <div class="nav-logo">
-      <div><span class="nav-logo-name">KOVONA</span><br><span class="nav-logo-sub">SYSTEM</span></div>
-      <div class="nav-logo-insy">Součástí <a href="#">InSy Group</a> ↗</div>
-    </div>
-    <div class="nav-links">
-      <a href="#">Produkty ▾</a><a href="#">Odvětví ▾</a><a href="#">Zakázková výroba</a>
-      <a href="#">O&nbsp;společnosti</a><a href="#">Kariéra</a><a href="#">Kontakt</a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-social">
-        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.5" width="20" height="13" rx="3" stroke="#444" stroke-width="1.5"/><polygon points="10,9.5 10,14.5 15.5,12" fill="#444"/></svg></a>
-        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#444" stroke-width="1.5"/><circle cx="7.8" cy="8.8" r="1.1" fill="#444"/><line x1="7.8" y1="11.2" x2="7.8" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v-3.2c0-1.2.9-2.1 2-2.1s2 .9 2 2.1V17" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="12" y1="11.2" x2="12" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+<nav class="nav">
+  <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
+    <div><span>KOVONA</span><span class="logo-sub">SYSTEM</span></div>
+    <div class="nav-logo-insy">Součástí <a href="#">InSy Group</a> ↗</div>
+  </div>
+  <div class="nav-items">
+    <div class="nav-item">
+      <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
+      <div class="mega-menu">
+        <div class="mega-col">
+          <h4>Regálové systémy</h4>
+          <a href="regaly-elegant.html">ELEGANT</a>
+          <a href="#">PRAKTIK</a>
+          <a href="#">HEAVY</a>
+          <a href="#">DRUMY</a>
+          <a href="#">FUTUR</a>
+        </div>
+        <div class="mega-col">
+          <h4>Ocelové profily</h4>
+          <a href="#">Uzavřené</a>
+          <a href="#">Otevřené</a>
+          <a href="#">Speciální</a>
+        </div>
+        <div class="mega-col">
+          <h4>Ostatní</h4>
+          <a href="#">Kovový nábytek</a>
+          <a href="#">Zakázková kovovýroba</a>
+        </div>
       </div>
-      <div class="nav-lang">CZ <span>| EN</span></div>
     </div>
-  </nav>
-</div>
+    <div class="nav-item"><a href="#" class="nav-link">Vývoj</a></div>
+    <div class="nav-item"><a href="#" class="nav-link">Technologie</a></div>
+    <div class="nav-item"><a href="#" class="nav-link">O&nbsp;společnosti</a></div>
+    <div class="nav-item"><a href="#" class="nav-link">Kariéra</a></div>
+    <div class="nav-item"><a href="#" class="nav-link">Kontakt</a></div>
+  </div>
+  <div class="nav-right">
+    <div class="nav-social">
+      <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.5" width="20" height="13" rx="3" stroke="#444" stroke-width="1.5"/><polygon points="10,9.5 10,14.5 15.5,12" fill="#444"/></svg></a>
+      <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#444" stroke-width="1.5"/><circle cx="7.8" cy="8.8" r="1.1" fill="#444"/><line x1="7.8" y1="11.2" x2="7.8" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v-3.2c0-1.2.9-2.1 2-2.1s2 .9 2 2.1V17" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="12" y1="11.2" x2="12" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="lang-switch"><span class="active">CZ</span> | EN</div>
+  </div>
+</nav>
 
 <div class="breadcrumb-bar">
   <div class="breadcrumb">
-    <a href="#">Domů</a> / <a href="#">Regálové systémy</a> / ELEGANT
+    <a href="index.html">Domů</a> / <a href="regaly-rozcestnik.html">Regálové systémy</a> / ELEGANT
   </div>
 </div>
 
@@ -415,30 +446,40 @@
   </div>
 </div>
 
-<footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo-name">KOVONA SYSTEM</div>
-        <div class="footer-logo-desc">Sériová kovovýroba z Českého Těšína od roku 1904.</div>
-        <div class="footer-social-label">Sledujte nás na sítích</div>
-        <div class="footer-social">
-          <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.5" width="20" height="13" rx="3" stroke="#AAA" stroke-width="1.5"/><polygon points="10,9.5 10,14.5 15.5,12" fill="#AAA"/></svg></a>
-          <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#AAA" stroke-width="1.5"/><circle cx="7.8" cy="8.8" r="1.1" fill="#AAA"/><line x1="7.8" y1="11.2" x2="7.8" y2="17" stroke="#AAA" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v-3.2c0-1.2.9-2.1 2-2.1s2 .9 2 2.1V17" stroke="#AAA" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="12" y1="11.2" x2="12" y2="17" stroke="#AAA" stroke-width="1.5" stroke-linecap="round"/></svg></a>
-          <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#AAA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-        <div class="footer-insy-label">Jsme součástí Industrial Synergy Group</div>
-        <ul class="footer-insy-list">
-          <li><strong>Industrial Synergy</strong> — strategické řízení a rozvoj skupiny</li>
-          <li><strong>Galvanko</strong> — galvanické a chemické povrchové úpravy kovů</li>
-          <li><strong>Lexona</strong> — sériová výroba kovových komponentů pro automotive</li>
-        </ul>
-      </div>
-      <div class="footer-col"><div class="footer-col-heading">Produkty</div><a href="#">Regálové systémy</a><a href="#" class="sub">ELEGANT</a><a href="#" class="sub">PRAKTIK</a><a href="#" class="sub">HEAVY</a><a href="#">Ocelové profily</a><a href="#">Kovový nábytek</a></div>
-      <div class="footer-col"><div class="footer-col-heading">Firma</div><a href="#">O společnosti</a><a href="#">Blog</a><a href="#">Kariéra</a><a href="#">Kontakt</a></div>
-      <div class="footer-col"><div class="footer-col-heading">Kontakt</div><address>Průmyslová 2007<br>737 01 Český Těšín</address><a href="#">+420 xxx xxx xxx</a><a href="#">info@kovona.cz</a></div>
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">KOVONA SYSTEM</div>
+      <p class="footer-tagline">Sériová kovovýroba z&nbsp;Českého Těšína od roku 1904.</p>
+      <p class="footer-group">Jsme součástí Industrial Synergy Group</p>
+      <ul class="footer-group-list">
+        <li><strong>Industrial Synergy</strong> — strategické řízení a rozvoj skupiny</li>
+        <li><strong>Galvanko</strong> — galvanické a chemické povrchové úpravy kovů</li>
+        <li><strong>Lexona</strong> — sériová výroba kovových komponentů pro automotive</li>
+      </ul>
     </div>
-    <div class="footer-bottom"><span class="footer-copy">© 2026 Kovona System, a.s.</span><span class="footer-lang">CZ | EN</span></div>
+    <div class="footer-col">
+      <h4>Produkty</h4>
+      <a href="regaly-rozcestnik.html">Regálové systémy a&nbsp;nábytek</a>
+      <a href="#">Specializované a&nbsp;sériové profily</a>
+      <a href="#">Zakázková kovovýroba</a>
+    </div>
+    <div class="footer-col">
+      <h4>Firma</h4>
+      <a href="#">O&nbsp;společnosti</a>
+      <a href="#">Kariéra</a>
+      <a href="#">Kontakt</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <h4>Kontakt</h4>
+      <address>Průmyslová 2007<br>737 01 Český Těšín</address>
+      <p>+420 xxx xxx xxx</p>
+      <p>info@kovona.cz</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Kovona System, a.s.</span>
+    <span>CZ | EN</span>
   </div>
 </footer>
 

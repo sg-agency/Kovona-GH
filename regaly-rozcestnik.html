@@ -9,123 +9,503 @@
     body { font-family: system-ui, -apple-system, sans-serif; color: #1A1A1A; background: #F4F4F4; line-height: 1.5; }
     a { text-decoration: none; color: inherit; }
 
-    /* Navigace Placeholder (Stejná jako detail) */
-    .nav-placeholder { background: #FFF; border-bottom: 1px solid #DDD; padding: 20px 56px; display: flex; align-items: center; }
-    .logo { font-weight: 800; font-size: 1.2rem; cursor: pointer; line-height: 1.1; }
-    .logo span { font-weight: 400; color: #888; font-size: 0.65rem; display: block; letter-spacing: 0.2em; text-transform: uppercase; }
+    /* ===== STICKY NAV (sjednocená s HP) ===== */
+    .nav { position: sticky; top: 0; z-index: 1000; background: #F4F4F4; border-bottom: 1px solid #DDDDDD; height: 80px; display: flex; align-items: center; padding: 0 56px; }
+    .nav-logo { color: #1A1A1A; font-weight: 800; font-size: 1.25rem; letter-spacing: 0.08em; margin-right: 72px; flex-shrink: 0; cursor: pointer; line-height: 1.15; display: flex; flex-direction: column; gap: 2px; }
+    .nav-logo .logo-sub { font-weight: 400; font-size: 0.6rem; letter-spacing: 0.22em; color: #888; display: block; }
+    .nav-logo-insy { font-size: 0.72rem; color: #444; font-weight: 400; letter-spacing: 0; }
+    .nav-logo-insy a { text-decoration: underline; color: #444; }
+    .nav-social { display: flex; gap: 8px; align-items: center; }
+    .nav-social a { width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; }
+    .nav-items { display: flex; align-items: center; height: 80px; flex: 1; }
+    .nav-item { position: relative; height: 80px; display: flex; align-items: center; }
+    .nav-link { color: #444; font-size: 0.95rem; font-weight: 500; padding: 0 18px; height: 80px; display: flex; align-items: center; white-space: nowrap; }
+    .nav-link:hover { color: #1A1A1A; background: #E8E8E8; }
+    .mega-menu { display: none; position: absolute; top: 80px; left: 0; background: #F0F0F0; border: 1px solid #DDDDDD; border-top: none; padding: 32px 36px; min-width: 440px; z-index: 999; flex-direction: row; }
+    .nav-item:hover .mega-menu { display: flex; }
+    .mega-col { padding-right: 36px; min-width: 148px; }
+    .mega-col:last-child { padding-right: 0; }
+    .mega-col h4 { color: #888; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 14px; font-weight: 600; }
+    .mega-col a { display: block; color: #444; font-size: 0.9rem; padding: 6px 0; }
+    .mega-col a:hover { color: #1A1A1A; }
+    .nav-right { display: flex; align-items: center; gap: 24px; margin-left: auto; flex-shrink: 0; }
+    .lang-switch { font-size: 0.85rem; color: #888; letter-spacing: 0.05em; }
+    .lang-switch .active { color: #1A1A1A; }
 
-    /* Sjednocená Drobečkovka */
-    .breadcrumb { padding: 24px 56px 0; font-size: 0.8rem; color: #888; background: #F4F4F4; }
+    /* ===== BREADCRUMB ===== */
+    .breadcrumb { padding: 20px 56px 0; font-size: 0.8rem; color: #888; background: #F4F4F4; }
     .breadcrumb a:hover { color: #1A1A1A; text-decoration: underline; }
 
-    /* RENAULT STYLE HERO */
-    .hero-container { position: relative; height: 500px; background: #E0E0E0; display: flex; align-items: center; padding: 0 56px; margin-top: 10px; }
-    .hero-box { background: #FFF; padding: 48px; max-width: 520px; border: 1px solid #DDD; }
-    .hero-box h1 { font-size: 3rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em; }
-    .hero-box p { font-size: 1rem; color: #555; line-height: 1.6; }
+    /* ===== HERO — text přímo na šedém podkladu ===== */
+    .hero-container {
+      height: 420px;
+      background: #DCDCDC;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 56px 56px;
+      margin-top: 10px;
+      position: relative;
+    }
+    .hero-photo-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      pointer-events: none;
+    }
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      max-width: 640px;
+    }
+    .hero-text p {
+      font-size: 1rem;
+      color: #444;
+      max-width: 520px;
+      line-height: 1.6;
+    }
 
-    /* TABS NAV */
-    .tabs-wrapper { border-bottom: 1px solid #DDD; background: #FFF; position: sticky; top: 0; z-index: 100; }
-    .tabs { display: flex; padding: 0 56px; gap: 60px; }
-    .tab { padding: 24px 0; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
-    .tab-title { display: block; font-size: 0.9rem; font-weight: 800; text-transform: uppercase; color: #AAA; letter-spacing: 0.05em; }
-    .tab-sub { display: block; font-size: 0.75rem; font-weight: 500; color: #BBB; margin-top: 4px; }
-    
+    /* ===== TABS ===== */
+    .tabs-wrapper {
+      border-bottom: 1px solid #DDD;
+      background: #FFF;
+      position: sticky;
+      top: 80px;
+      z-index: 100;
+    }
+    .tabs { display: flex; padding: 0 56px; gap: 48px; }
+    .tab { padding: 20px 0; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
+    .tab-title { display: block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #AAA; letter-spacing: 0.05em; }
+    .tab-sub { display: block; font-size: 0.72rem; font-weight: 500; color: #BBB; margin-top: 3px; }
     .tab.active { border-bottom-color: #1A1A1A; }
     .tab.active .tab-title { color: #1A1A1A; }
     .tab.active .tab-sub { color: #888; }
 
-    /* GRID SECTION */
-    .content-section { padding: 64px 56px 80px; max-width: 1440px; margin: 0 auto; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    
-    .card { background: #FFF; border: 1px solid #DDD; text-decoration: none; color: inherit; transition: all 0.2s; }
-    .card:hover { border-color: #1A1A1A; transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-    
-    .card-img { height: 300px; background: #F0F0F0; display: flex; align-items: center; justify-content: center; color: #BBB; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border-bottom: 1px solid #EEE; }
-    
-    .card-body { padding: 32px; }
-    .card-tag { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: #AAA; margin-bottom: 12px; display: block; letter-spacing: 0.1em; }
-    .card h3 { font-size: 1.5rem; margin-bottom: 12px; font-weight: 800; }
-    .card p { font-size: 0.95rem; color: #666; line-height: 1.6; margin-bottom: 24px; height: 70px; overflow: hidden; }
-    .card-link { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 2px solid #1A1A1A; padding-bottom: 2px; }
+    /* ===== PRODUCT CARDS — kompaktní ===== */
+    .content-section { padding: 48px 56px 64px; max-width: 1440px; margin: 0 auto; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
-    /* Placeholder Patička */
-    footer { background: #F4F4F4; border-top: 1px solid #DDD; padding: 40px 56px; margin-top: 40px; font-size: 0.8rem; color: #888; text-align: center; }
+    .card {
+      background: #FFF;
+      border: 1px solid #E0E0E0;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      display: block;
+      position: relative;
+    }
+    .card:hover { border-color: #AAAAAA; box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
+
+    .card-img {
+      height: 220px;
+      background: #EBEBEB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #BBB;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      position: relative;
+    }
+    .card:hover .card-img { background: #E2E2E2; }
+
+    .card-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #1A1A1A;
+      color: #FFF;
+      font-size: 0.62rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 4px 9px;
+      z-index: 2;
+    }
+
+    .card-body { padding: 16px 18px 20px; }
+    .card-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; color: #AAA; letter-spacing: 0.1em; display: block; margin-bottom: 6px; }
+    .card h3 { font-size: 1.15rem; font-weight: 800; margin-bottom: 12px; }
+    .card-link { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #333; border-bottom: 1.5px solid #1A1A1A; padding-bottom: 1px; }
+
+    /* ===== NAŠE REGÁLY — SEO sekce ===== */
+    .seo-section { background: #FFF; padding: 72px 56px; }
+    .seo-inner { max-width: 1328px; margin: 0 auto; }
+    .seo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .seo-img { width: 100%; aspect-ratio: 4/3; background: #EBEBEB; display: flex; align-items: center; justify-content: center; }
+    .seo-img span { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #999; }
+    .seo-content h2 { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .seo-content .seo-lead { font-size: 1rem; color: #333; line-height: 1.7; margin-bottom: 24px; }
+    .seo-content h3 { font-size: 0.92rem; font-weight: 700; color: #1A1A1A; margin: 20px 0 6px; }
+    .seo-content p { font-size: 0.875rem; color: #555; line-height: 1.7; }
+    .seo-content ul { padding-left: 18px; margin: 6px 0; }
+    .seo-content li { font-size: 0.875rem; color: #555; line-height: 1.7; margin-bottom: 3px; }
+    .seo-content strong { color: #1A1A1A; font-weight: 600; }
+
+    /* ===== NABÍZÍME TAKÉ — 2 kompaktní karty bez obrázku ===== */
+    .also-section {
+      background: #F4F4F4;
+      padding: 72px 56px;
+    }
+    .also-inner {
+      max-width: 1328px;
+      margin: 0 auto;
+    }
+    .also-inner > h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 32px;
+    }
+    .also-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .also-card {
+      background: #FFF;
+      border: 1px solid #CCCCCC;
+      padding: 28px 32px;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .also-card:hover { border-color: #999; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+    .also-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 8px; }
+    .also-card p { font-size: 0.875rem; color: #555; line-height: 1.65; margin-bottom: 16px; }
+    .also-card-link { font-size: 0.875rem; font-weight: 600; color: #333; }
+
+    /* ===== CTA BANNER ===== */
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 10px 22px; border-radius: 3px; font-size: 0.9rem; font-weight: 500; cursor: pointer; border: 1px solid transparent; white-space: nowrap; font-family: inherit; }
+    .btn-filled { background: #555; color: #FFF; border-color: #555; }
+    .btn-filled:hover { background: #444; border-color: #444; }
+    .btn-outline-dark { background: transparent; color: #1A1A1A; border-color: #888; }
+    .btn-outline-dark:hover { background: #DCDCDC; }
+
+    .cta-banner { background: #E4E4E4; padding: 96px 56px; text-align: center; }
+    .cta-banner h2 { font-size: 2.1rem; font-weight: 700; color: #1A1A1A; margin-bottom: 14px; }
+    .cta-banner p { color: #666; font-size: 1rem; margin-bottom: 40px; }
+    .cta-banner .btns { display: flex; gap: 12px; justify-content: center; }
+
+    /* ===== FOOTER ===== */
+    footer { background: #525252; padding: 72px 56px 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; padding-bottom: 56px; }
+    .footer-logo { font-size: 1rem; font-weight: 800; color: #EEE; letter-spacing: 0.06em; margin-bottom: 16px; }
+    .footer-tagline { font-size: 0.875rem; color: #999; line-height: 1.7; margin-bottom: 14px; }
+    .footer-group { font-size: 0.85rem; font-weight: 600; color: #AAA; margin-top: 32px; margin-bottom: 16px; }
+    .footer-group-list { list-style: none; padding: 0; margin: 0; }
+    .footer-group-list li { font-size: 0.8rem; color: #666; padding: 4px 0 4px 12px; position: relative; line-height: 1.5; }
+    .footer-group-list li::before { content: "·"; position: absolute; left: 0; color: #666; }
+    .footer-group-list li strong { color: #888; font-weight: 600; }
+    .footer-col h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.13em; color: #999; margin-bottom: 20px; font-weight: 600; }
+    .footer-col a { display: block; font-size: 0.875rem; color: #888; padding: 5px 0; }
+    .footer-col a:hover { color: #CCC; }
+    .footer-col a.sub { padding-left: 14px; font-size: 0.825rem; color: #777; }
+    .footer-col a.sub:hover { color: #AAA; }
+    .footer-contact p, .footer-contact address { font-size: 0.875rem; color: #888; line-height: 1.85; font-style: normal; }
+    .footer-bottom { border-top: 1px solid #444; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom span { font-size: 0.8rem; color: #777; }
   </style>
 </head>
 <body>
 
-  <nav class="nav-placeholder">
-    <div class="logo" onclick="window.location.href='kovona-hp.html'">
-      KOVONA <span>SYSTEM</span>
+  <nav class="nav">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
+      <div><span>KOVONA</span><span class="logo-sub">SYSTEM</span></div>
+      <div class="nav-logo-insy">Součástí <a href="#">InSy Group</a> ↗</div>
+    </div>
+    <div class="nav-items">
+      <div class="nav-item">
+        <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
+        <div class="mega-menu">
+          <div class="mega-col">
+            <h4>Regálové systémy</h4>
+            <a href="regaly-elegant.html">ELEGANT</a>
+            <a href="#">PRAKTIK</a>
+            <a href="#">HEAVY</a>
+            <a href="#">DRUMY</a>
+            <a href="#">FUTUR</a>
+          </div>
+          <div class="mega-col">
+            <h4>Ocelové profily</h4>
+            <a href="#">Uzavřené</a>
+            <a href="#">Otevřené</a>
+            <a href="#">Speciální</a>
+          </div>
+          <div class="mega-col">
+            <h4>Ostatní</h4>
+            <a href="#">Kovový nábytek</a>
+            <a href="#">Zakázková kovovýroba</a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item"><a href="#" class="nav-link">Vývoj</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">Technologie</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">O&nbsp;společnosti</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">Kariéra</a></div>
+      <div class="nav-item"><a href="#" class="nav-link">Kontakt</a></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-social">
+        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.5" width="20" height="13" rx="3" stroke="#444" stroke-width="1.5"/><polygon points="10,9.5 10,14.5 15.5,12" fill="#444"/></svg></a>
+        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="#444" stroke-width="1.5"/><circle cx="7.8" cy="8.8" r="1.1" fill="#444"/><line x1="7.8" y1="11.2" x2="7.8" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v-3.2c0-1.2.9-2.1 2-2.1s2 .9 2 2.1V17" stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="12" y1="11.2" x2="12" y2="17" stroke="#444" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+        <a href="#"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      </div>
+      <div class="lang-switch"><span class="active">CZ</span> | EN</div>
     </div>
   </nav>
 
   <nav class="breadcrumb">
-    <a href="kovona-hp.html">Domů</a> / Regálové systémy
+    <a href="index.html">Domů</a> / Regálové systémy
   </nav>
 
+  <!-- HERO — text přímo na šedém podkladu -->
   <section class="hero-container">
-    <div class="hero-box">
-      <h1>Regály, které přežijí generace</h1>
-      <p>Od precizních interiérových systémů po robustní průmyslová řešení. Navrženo a vyrobeno v České republice s tradicí od roku 1904.</p>
+    <div class="hero-photo-label" id="hero-photo-label">FOTO: REGÁL ELEGANT V MÍSTNOSTI</div>
+    <div class="hero-text">
+      <h1>Regály, které<br>přežijí generace</h1>
+      <p>Od precizních interiérových systémů po robustní průmyslová řešení. Navrženo a&nbsp;vyrobeno v&nbsp;České republice s&nbsp;tradicí od roku 1904.</p>
     </div>
   </section>
 
+  <!-- TABS -->
   <div class="tabs-wrapper">
     <div class="tabs">
-      <div class="tab active">
-        <span class="tab-title">Domácnost & DIY</span>
+      <div class="tab active" data-tab="diy">
+        <span class="tab-title">Domácnost &amp; DIY</span>
         <span class="tab-sub">Designové a hobby regály</span>
       </div>
-      <div class="tab">
-        <span class="tab-title">Sklady & Profi</span>
+      <div class="tab" data-tab="profi">
+        <span class="tab-title">Sklady &amp; Profi</span>
         <span class="tab-sub">Obchody, archivy a dílny</span>
       </div>
-      <div class="tab">
-        <span class="tab-title">Průmysl & Heavy</span>
+      <div class="tab" data-tab="heavy">
+        <span class="tab-title">Průmysl &amp; Heavy</span>
         <span class="tab-sub">Logistika a velkokapacitní sklady</span>
+      </div>
+      <div class="tab" data-tab="nabytek">
+        <span class="tab-title">Doplňkový nábytek</span>
+        <span class="tab-sub">Kovové stoly a&nbsp;židle</span>
       </div>
     </div>
   </div>
 
+  <!-- PRODUCT CARDS -->
   <section class="content-section">
-    <div class="grid">
-      <a href="regaly-elegant.html" class="card">
-        <div class="card-img">PRODUKTOVÉ FOTO: ELEGANT</div>
+    <div class="grid" id="product-grid">
+
+      <a href="regaly-elegant.html" class="card" data-tabs="diy profi">
+        <div class="card-img">
+          <span class="card-badge">Bestseller</span>
+          FOTO: ELEGANT
+        </div>
         <div class="card-body">
-          <span class="card-tag">Bezšroubové / Modular</span>
+          <span class="card-tag">Bezšroubové · Modulární</span>
           <h3>Řada Elegant</h3>
-          <p>Prémiový modulární systém pro moderní interiéry. Unikátní skryté spoje a vysoká variabilita.</p>
-          <span class="card-link">Konfigurovat model</span>
+          <span class="card-link">Zobrazit řadu →</span>
         </div>
       </a>
-      
-      <div class="card">
-        <div class="card-img">PRODUKTOVÉ FOTO: PRAKTIK</div>
+
+      <a href="#" class="card" data-tabs="diy profi">
+        <div class="card-img">FOTO: PRAKTIK</div>
         <div class="card-body">
-          <span class="card-tag">Šroubové / Klasik</span>
+          <span class="card-tag">Šroubové · Klasik</span>
           <h3>Řada Praktik</h3>
-          <p>Funkční a odolné řešení pro každodenní pořádek v domácí dílně či sklepě.</p>
-          <span class="card-link">Zobrazit řadu</span>
+          <span class="card-link">Zobrazit řadu →</span>
+        </div>
+      </a>
+
+      <a href="#" class="card" data-tabs="diy profi">
+        <div class="card-img">FOTO: FUTUR</div>
+        <div class="card-body">
+          <span class="card-tag">Designové · Interiér</span>
+          <h3>Řada Futur</h3>
+          <span class="card-link">Zobrazit řadu →</span>
+        </div>
+      </a>
+
+      <a href="#" class="card" data-tabs="profi heavy">
+        <div class="card-img">FOTO: DRUMY</div>
+        <div class="card-body">
+          <span class="card-tag">Středně těžké · Sklady</span>
+          <h3>Řada Drumy</h3>
+          <span class="card-link">Zobrazit řadu →</span>
+        </div>
+      </a>
+
+      <a href="#" class="card" data-tabs="heavy">
+        <div class="card-img">FOTO: HEAVY</div>
+        <div class="card-body">
+          <span class="card-tag">Těžké · Průmysl</span>
+          <h3>Řada Heavy</h3>
+          <span class="card-link">Zobrazit řadu →</span>
+        </div>
+      </a>
+
+      <div class="card card-placeholder" data-tabs="nabytek" style="border-style:dashed;display:none">
+        <div class="card-img" style="background:#F4F4F4;color:#BBB;font-size:0.75rem">PŘIPRAVUJEME</div>
+        <div class="card-body">
+          <span class="card-tag">Kovové · Doplňkový nábytek</span>
+          <h3>Stoly &amp; Židle</h3>
+          <span class="card-link" style="color:#BBB">Brzy k dispozici</span>
         </div>
       </div>
 
-      <div class="card">
-        <div class="card-img">PRODUKTOVÉ FOTO: UNI</div>
-        <div class="card-body">
-          <span class="card-tag">Kovové / Standard</span>
-          <h3>Řada Uni</h3>
-          <p>Univerzální kovové regály s vysokou nosností pro všestranné použití.</p>
-          <span class="card-link">Zobrazit řadu</span>
+    </div>
+  </section>
+
+  <script>
+    (function() {
+      var tabs = document.querySelectorAll('.tab[data-tab]');
+      var cards = document.querySelectorAll('.card[data-tabs]');
+      var heroLabel = document.getElementById('hero-photo-label');
+
+      var heroLabels = {
+        'diy':     'FOTO: REGÁL ELEGANT V MÍSTNOSTI',
+        'profi':   'FOTO: REGÁL DRUMY VE SKLADU',
+        'heavy':   'FOTO: REGÁL HEAVY V PRŮMYSLKOVÉM PROVOZU',
+        'nabytek': 'FOTO: KOVOVÝ NÁBYTEK V INTERIÉRU'
+      };
+
+      function filterCards(activeTab) {
+        cards.forEach(function(card) {
+          var tabList = card.dataset.tabs.split(' ');
+          card.style.display = tabList.indexOf(activeTab) !== -1 ? '' : 'none';
+        });
+        if (heroLabel && heroLabels[activeTab]) {
+          heroLabel.textContent = heroLabels[activeTab];
+        }
+      }
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active'); });
+          tab.classList.add('active');
+          filterCards(tab.dataset.tab);
+        });
+      });
+
+      // init: show first tab
+      filterCards('diy');
+    })();
+  </script>
+
+  <!-- NAŠE REGÁLY — SEO sekce -->
+  <section class="seo-section">
+    <div class="seo-inner">
+      <div class="seo-layout">
+        <div class="seo-img">
+          <span>FOTO: REGÁL V PROSTORU</span>
+        </div>
+        <div class="seo-content">
+          <h2>Naše regály</h2>
+          <p class="seo-lead">Od roku 1904 vyrábíme systémy, které kombinují <strong>extrémní odolnost s&nbsp;moderním designem</strong>. Naše řešení prověřila desetiletí v&nbsp;domácnostech, obchodech i&nbsp;průmyslu.</p>
+          <h3>Kvalita z&nbsp;vlastní výroby</h3>
+          <p>Vše od ocelového polotovaru po finální regál vzniká u&nbsp;nás v&nbsp;<strong>Českém Těšíně</strong>. Máme absolutní kontrolu nad procesem, garantujeme stálou kvalitu a&nbsp;plnění evropských norem.</p>
+          <h3>Řešení pro každé prostředí</h3>
+          <ul>
+            <li><strong>Domácnosti a obchody:</strong> Lehké designové systémy.</li>
+            <li><strong>Sklady a kanceláře:</strong> Středně zatížené varianty.</li>
+            <li><strong>Logistika:</strong> Těžké průmyslové konstrukce s&nbsp;možností úprav na&nbsp;míru.</li>
+          </ul>
+          <h3>Modulární systém, který roste s&nbsp;vámi</h3>
+          <p>Naše regály jsou plně kompatibilní. Začněte základní sestavou a kdykoliv ji rozšiřte – <strong>bez nutnosti měnit celý systém</strong>.</p>
+          <h3>Velkoobchod a zakázková řešení</h3>
+          <p>Dodáváme globálním řetězcům i&nbsp;jednotlivcům. Nabízíme <strong>individuální ceny, technickou podporu a&nbsp;export</strong> do celého světa.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- NABÍZÍME TAKÉ — 2 karty bez obrázku -->
+  <section class="also-section">
+    <div class="also-inner">
+      <h2>Nabízíme také</h2>
+      <div class="also-cards">
+
+        <a href="#" class="also-card">
+          <h3>Specializované a&nbsp;sériové profily</h3>
+          <p>Uzavřené, otevřené i&nbsp;speciální ocelové profily vyráběné na&nbsp;míru pro stavebnictví, automotive i&nbsp;průmysl.</p>
+          <span class="also-card-link">Prohlédnout profily →</span>
+        </a>
+
+        <a href="#" class="also-card">
+          <h3>Zakázková kovovýroba</h3>
+          <p>Sériová kovovýroba pro globální značky — vše in-house, od lisování a svařování po povrchové úpravy a montáž.</p>
+          <span class="also-card-link">Zjistit více →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <h2>Hledáte partnera v kovovýrobě?</h2>
+    <p>Ozvěte se — rádi probereme vaše konkrétní požadavky.</p>
+    <div class="btns">
+      <a href="#" class="btn btn-filled">Mám zájem o&nbsp;spolupráci</a>
+      <a href="regaly-elegant.html" class="btn btn-outline-dark">Prohlédnout ELEGANT</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 Kovona System, a.s. | <a href="kovona-hp.html" style="text-decoration: underline;">Návrat na hlavní stránku</a>
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">KOVONA SYSTEM</div>
+        <p class="footer-tagline">Sériová kovovýroba z&nbsp;Českého Těšína od roku 1904.</p>
+        <p class="footer-group">Jsme součástí Industrial Synergy Group</p>
+        <ul class="footer-group-list">
+          <li><strong>Industrial Synergy</strong> — strategické řízení a rozvoj skupiny</li>
+          <li><strong>Galvanko</strong> — galvanické a chemické povrchové úpravy kovů</li>
+          <li><strong>Lexona</strong> — sériová výroba kovových komponentů pro automotive</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Produkty</h4>
+        <a href="regaly-rozcestnik.html">Regálové systémy a&nbsp;nábytek</a>
+        <a href="#">Specializované a&nbsp;sériové profily</a>
+        <a href="#">Zakázková kovovýroba</a>
+      </div>
+
+      <div class="footer-col">
+        <h4>Firma</h4>
+        <a href="#">O&nbsp;společnosti</a>
+        <a href="#">Kariéra</a>
+        <a href="#">Kontakt</a>
+      </div>
+
+      <div class="footer-col footer-contact">
+        <h4>Kontakt</h4>
+        <address>
+          Průmyslová 2007<br>
+          737 01 Český Těšín
+        </address>
+        <p>+420 xxx xxx xxx</p>
+        <p>info@kovona.cz</p>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 Kovona System, a.s.</span>
+      <span>CZ | EN</span>
+    </div>
   </footer>
 
 </body>

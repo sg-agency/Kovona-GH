@@ -269,7 +269,12 @@
       background: #FFF;
       border: 1px solid #CCCCCC;
       padding: 16px 16px 0;
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
     }
+    .bu-card:hover { border-color: #999; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 
     .bu-card-img {
       height: 200px;
@@ -595,6 +600,33 @@
       font-size: 0.8rem;
       color: #777;
     }
+
+    /* ── LinkedIn sekce ─────────────────────────────────────── */
+    .linkedin-section { background: #F4F4F4; padding: 80px 56px; filter: grayscale(1); }
+    .li-emoji { display: inline-block; filter: grayscale(1) brightness(0.55); }
+    .linkedin-header { max-width: 1328px; margin: 0 auto 40px; }
+    .linkedin-header h2 { font-size: 2rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .linkedin-header p { color: #666; font-size: 0.95rem; max-width: 520px; }
+    .li-carousel-wrap { position: relative; max-width: 1328px; margin: 0 auto; padding-right: 56px; }
+    .li-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .li-card { background: #FFF; padding: 24px; display: flex; flex-direction: column; gap: 12px; transition: box-shadow 0.2s; }
+    .li-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+    .li-card.hidden { display: none; }
+    .li-card-header { display: flex; align-items: center; gap: 10px; }
+    .li-avatar { width: 40px; height: 40px; flex-shrink: 0; }
+    .li-avatar svg { display: block; width: 40px; height: 40px; }
+    .li-author { font-size: 0.82rem; font-weight: 700; color: #1A1A1A; line-height: 1.3; }
+    .li-meta { font-size: 0.72rem; color: #999; margin-top: 2px; display: flex; align-items: center; gap: 4px; }
+    .li-img { width: 100%; aspect-ratio: 16/9; overflow: hidden; }
+    .li-img svg { display: block; width: 100%; height: 100%; }
+    .li-text { font-size: 0.88rem; color: #333; line-height: 1.65; flex: 1; }
+    .li-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 12px; border-top: 1px solid #F0F0F0; margin-top: auto; }
+    .li-reactions { font-size: 0.75rem; color: #666; }
+    .li-readmore { font-size: 0.78rem; color: #888; text-decoration: none; }
+    .li-readmore:hover { text-decoration: underline; }
+    .li-arrow { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 40px; height: 40px; background: #FFF; border: 1px solid #DDD; cursor: pointer; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: border-color 0.15s, background 0.15s; font-family: inherit; }
+    .li-arrow:hover { border-color: #1A1A1A; background: #F8F8F8; }
+    .li-section-cta { max-width: 1328px; margin: 32px auto 0; }
   </style>
 </head>
 <body>
@@ -609,7 +641,7 @@
 <div id="homepage">
 
   <nav class="nav">
-    <div class="nav-logo" onclick="location.reload()">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">
       <div><span>KOVONA</span><span class="logo-sub">SYSTEM</span></div>
       <div class="nav-logo-insy">Součástí <a href="#">InSy Group</a> ↗</div>
     </div>
@@ -617,13 +649,15 @@
     <div class="nav-items">
 
       <div class="nav-item">
-        <a href="regaly-rozcestnik.html" class="nav-link">Produkty ▾</a>
+        <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
         <div class="mega-menu">
           <div class="mega-col">
             <h4>Regálové systémy</h4>
             <a href="regaly-elegant.html">ELEGANT</a>
             <a href="#" onclick="navClick(event, 'PRAKTIK')">PRAKTIK</a>
             <a href="#" onclick="navClick(event, 'HEAVY')">HEAVY</a>
+            <a href="#" onclick="navClick(event, 'DRUMY')">DRUMY</a>
+            <a href="#" onclick="navClick(event, 'FUTUR')">FUTUR</a>
           </div>
           <div class="mega-col">
             <h4>Ocelové profily</h4>
@@ -634,27 +668,17 @@
           <div class="mega-col">
             <h4>Ostatní</h4>
             <a href="#" onclick="navClick(event, 'Kovový nábytek')">Kovový nábytek</a>
+            <a href="#" onclick="navClick(event, 'Zakázková kovovýroba')">Zakázková kovovýroba</a>
           </div>
         </div>
       </div>
 
       <div class="nav-item">
-        <a href="#" class="nav-link" onclick="navClick(event, 'Odvětví')">Odvětví ▾</a>
-        <div class="mega-menu">
-          <div class="mega-col">
-            <h4>Odvětví</h4>
-            <a href="#" onclick="navClick(event, 'Intralogistika &amp; sklady')">Intralogistika &amp; sklady</a>
-            <a href="#" onclick="navClick(event, 'Automotive')">Automotive</a>
-            <a href="#" onclick="navClick(event, 'Elektroprůmysl')">Elektroprůmysl</a>
-            <a href="#" onclick="navClick(event, 'Fotovoltaika')">Fotovoltaika</a>
-            <a href="#" onclick="navClick(event, 'Stavebnictví')">Stavebnictví</a>
-            <a href="#" onclick="navClick(event, 'Nábytek &amp; retail')">Nábytek &amp; retail</a>
-          </div>
-        </div>
+        <a href="#" class="nav-link" onclick="navClick(event, 'Vývoj')">Vývoj</a>
       </div>
 
       <div class="nav-item">
-        <a href="#" class="nav-link" onclick="navClick(event, 'Zakázková výroba')">Zakázková výroba</a>
+        <a href="#" class="nav-link" onclick="navClick(event, 'Technologie')">Technologie</a>
       </div>
       <div class="nav-item">
         <a href="#" class="nav-link" onclick="navClick(event, 'O společnosti')">O&nbsp;společnosti</a>
@@ -687,16 +711,16 @@
       <h1 class="hero-headline">Kovovýroba od roku 1904<br>v&nbsp;Českém Těšíně</h1>
       <p class="hero-subline">Dodáváme regálové systémy, ocelové profily a&nbsp;zakázkovou kovovýrobu pro globální značky.</p>
       <div class="hero-ctas">
-        <a href="regaly-rozcestnik.html" class="btn btn-filled">Prohlédnout produkty</a>
+        <a href="#bu-section" class="btn btn-filled" onclick="event.preventDefault();document.getElementById('bu-section').scrollIntoView({behavior:'smooth'})">Prohlédnout produkty</a>
         <a href="#" class="btn btn-outline-light" onclick="navClick(event, 'Mám zájem o spolupráci')">Mám zájem o&nbsp;spolupráci</a>
       </div>
     </div>
   </section>
 
-  <section class="bu-section">
+  <section class="bu-section" id="bu-section">
     <div class="bu-cards">
 
-      <div class="bu-card">
+      <a class="bu-card" href="regaly-rozcestnik.html">
         <div class="bu-card-img">
           <svg width="64" height="46" viewBox="0 0 64 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="62" height="44" rx="3" stroke="#AAAAAA" stroke-width="1.5" fill="none"/>
@@ -705,13 +729,13 @@
           </svg>
         </div>
         <div class="bu-card-body">
-          <h3>Regálové systémy</h3>
+          <h3>Regálové systémy a&nbsp;nábytek</h3>
           <p>Vlastní produktové řady pro DIY, retail i&nbsp;průmyslové sklady.</p>
-          <a href="regaly-rozcestnik.html" class="bu-card-link">Prohlédnout regály →</a>
+          <span class="bu-card-link">Prohlédnout regály →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="bu-card">
+      <a class="bu-card" href="#" onclick="navClick(event,'Specializované profily')">
         <div class="bu-card-img">
           <svg width="64" height="46" viewBox="0 0 64 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="62" height="44" rx="3" stroke="#AAAAAA" stroke-width="1.5" fill="none"/>
@@ -720,13 +744,13 @@
           </svg>
         </div>
         <div class="bu-card-body">
-          <h3>Ocelové profily</h3>
+          <h3>Specializované a&nbsp;sériové profily</h3>
           <p>Uzavřené, otevřené i&nbsp;speciální profily vyráběné na&nbsp;míru.</p>
-          <a href="#" class="bu-card-link" onclick="navClick(event, 'Ocelové profily')">Prohlédnout profily →</a>
+          <span class="bu-card-link">Prohlédnout profily →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="bu-card">
+      <a class="bu-card" href="#" onclick="navClick(event,'Zakázková kovovýroba')">
         <div class="bu-card-img">
           <svg width="64" height="46" viewBox="0 0 64 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="1" y="1" width="62" height="44" rx="3" stroke="#AAAAAA" stroke-width="1.5" fill="none"/>
@@ -735,11 +759,11 @@
           </svg>
         </div>
         <div class="bu-card-body">
-          <h3>Zakázková výroba</h3>
-          <p>Sériová kovovýroba pro globální značky — vše in-house.</p>
-          <a href="#" class="bu-card-link" onclick="navClick(event, 'Zakázková výroba')">Zjistit více →</a>
+          <h3>Zakázková kovovýroba</h3>
+          <p>Výroba přesně dle vašich představ a&nbsp;potřeb — od prototypu po velkou sérii.</p>
+          <span class="bu-card-link">Zjistit více →</span>
         </div>
-      </div>
+      </a>
 
     </div>
   </section>
@@ -794,8 +818,68 @@
     <div class="carousel-dots" id="carousel-dots"></div>
   </section>
 
+  <section class="linkedin-section">
+    <div class="linkedin-header">
+      <div>
+        <h2>Ze života v&nbsp;Kovoně</h2>
+        <p>Sledujte novinky z&nbsp;výroby, nové produkty a&nbsp;příběhy lidí,<br>kteří stojí za&nbsp;značkou Kovona System.</p>
+      </div>
+    </div>
+    <div class="li-carousel-wrap">
+      <div class="li-cards" id="li-cards">
+
+        <!-- Karta 1: Plavecký oddíl -->
+        <div class="li-card">
+          <div class="li-card-header">
+            <div class="li-avatar"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#CCC"/><text x="6" y="22" font-size="14" fill="#666" font-family="sans-serif" font-weight="700">KS</text></svg></div>
+            <div>
+              <div class="li-author">Kovona System, a.s.</div>
+              <div class="li-meta">6&nbsp;d · <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="vertical-align:middle"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1.2"/><path d="M6 1 Q8 3 8 6 Q8 9 6 11 Q4 9 4 6 Q4 3 6 1Z" stroke="#888" stroke-width="1" fill="none"/><line x1="1" y1="6" x2="11" y2="6" stroke="#888" stroke-width="1"/></svg></div>
+            </div>
+          </div>
+          <p class="li-text"><span class="li-emoji">🏊</span> Šup do vody! <span class="li-emoji">💦</span> Plavecký oddíl TJ Slavoj Český Těšín pravidelně trénuje, účastní se závodů a pořádá také&nbsp;…</p>
+          <div class="li-img li-img-photo"><svg width="100%" height="100%" viewBox="0 0 400 220" fill="none" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#D8D8D8"/><rect x="170" y="80" width="60" height="50" rx="4" fill="#BBB"/><polygon points="158,145 200,90 242,145" fill="#BBB"/><circle cx="270" cy="88" r="16" fill="#BBB"/></svg></div>
+          <div class="li-footer"><span class="li-reactions"><span class="li-emoji">👍</span> 12 · 1&nbsp;repost</span><a href="https://www.linkedin.com/company/kovonasystem" target="_blank" class="li-readmore">…více</a></div>
+        </div>
+
+        <!-- Karta 2: Vrchařská koruna Třinecka -->
+        <div class="li-card">
+          <div class="li-card-header">
+            <div class="li-avatar"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#CCC"/><text x="6" y="22" font-size="14" fill="#666" font-family="sans-serif" font-weight="700">KS</text></svg></div>
+            <div>
+              <div class="li-author">Kovona System, a.s.</div>
+              <div class="li-meta">1&nbsp;týden · <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="vertical-align:middle"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1.2"/><path d="M6 1 Q8 3 8 6 Q8 9 6 11 Q4 9 4 6 Q4 3 6 1Z" stroke="#888" stroke-width="1" fill="none"/><line x1="1" y1="6" x2="11" y2="6" stroke="#888" stroke-width="1"/></svg></div>
+            </div>
+          </div>
+          <p class="li-text"><span class="li-emoji">⛰️</span> Vrchařská koruna Třinecka — Na ocenění účastníků Vrchařské koruny Třinecka jsme přispěli vyrobenými medailemi a&nbsp;také&nbsp;…</p>
+          <div class="li-img li-img-photo"><svg width="100%" height="100%" viewBox="0 0 400 220" fill="none" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#D8D8D8"/><rect x="170" y="80" width="60" height="50" rx="4" fill="#BBB"/><polygon points="158,145 200,90 242,145" fill="#BBB"/><circle cx="270" cy="88" r="16" fill="#BBB"/></svg></div>
+          <div class="li-footer"><span class="li-reactions"><span class="li-emoji">👍</span> 24 · 1&nbsp;komentář</span><a href="https://www.linkedin.com/company/kovonasystem" target="_blank" class="li-readmore">…více</a></div>
+        </div>
+
+        <!-- Karta 3: Veletrh – video -->
+        <div class="li-card">
+          <div class="li-card-header">
+            <div class="li-avatar"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="4" fill="#CCC"/><text x="6" y="22" font-size="14" fill="#666" font-family="sans-serif" font-weight="700">KS</text></svg></div>
+            <div>
+              <div class="li-author">Kovona System, a.s. <span style="font-weight:400">sdílel/a</span></div>
+              <div class="li-meta">2&nbsp;týdny · Upraveno · <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style="vertical-align:middle"><circle cx="6" cy="6" r="5" stroke="#888" stroke-width="1.2"/><path d="M6 1 Q8 3 8 6 Q8 9 6 11 Q4 9 4 6 Q4 3 6 1Z" stroke="#888" stroke-width="1" fill="none"/><line x1="1" y1="6" x2="11" y2="6" stroke="#888" stroke-width="1"/></svg></div>
+            </div>
+          </div>
+          <p class="li-text">Veletrh je za námi a my bychom se s vámi rádi podělili o poslední krátké video z&nbsp;našeho stánku <span class="li-emoji">🧡</span> <span class="li-emoji">💙</span> …</p>
+          <div class="li-img li-img-video"><svg width="100%" height="100%" viewBox="0 0 400 220" fill="none" preserveAspectRatio="xMidYMid slice"><rect width="400" height="220" fill="#C8C8C8"/><circle cx="200" cy="110" r="32" fill="rgba(0,0,0,0.18)"/><polygon points="190,95 190,125 220,110" fill="white"/></svg></div>
+          <div class="li-footer"><span class="li-reactions"><span class="li-emoji">👍</span> 19 · 4&nbsp;reposts</span><a href="https://www.linkedin.com/company/kovonasystem" target="_blank" class="li-readmore">…více</a></div>
+        </div>
+
+      </div>
+      <button class="li-arrow" id="li-next" aria-label="Další příspěvky">→</button>
+    </div>
+    <div class="li-section-cta">
+      <a href="https://www.linkedin.com/company/kovonasystem" target="_blank" class="btn btn-outline-dark">Sledovat na LinkedIn ↗</a>
+    </div>
+  </section>
+
   <section class="cta-banner">
-    <h2>Hledáte partnera pro sériovou kovovýroba?</h2>
+    <h2>Hledáte partnera v kovovýrobě?</h2>
     <p>Ozvěte se — rádi probereme vaše konkrétní požadavky.</p>
     <div class="btns">
       <a href="#" class="btn btn-filled" onclick="navClick(event, 'Mám zájem o spolupráci')">Mám zájem o&nbsp;spolupráci</a>
@@ -819,18 +903,14 @@
 
       <div class="footer-col">
         <h4>Produkty</h4>
-        <a href="regaly-rozcestnik.html">Regálové systémy</a>
-        <a href="regaly-elegant.html" class="sub">ELEGANT</a>
-        <a href="#" class="sub" onclick="navClick(event, 'PRAKTIK')">PRAKTIK</a>
-        <a href="#" class="sub" onclick="navClick(event, 'HEAVY')">HEAVY</a>
-        <a href="#" onclick="navClick(event, 'Ocelové profily')">Ocelové profily</a>
-        <a href="#" onclick="navClick(event, 'Kovový nábytek')">Kovový nábytek</a>
+        <a href="regaly-rozcestnik.html">Regálové systémy a&nbsp;nábytek</a>
+        <a href="#" onclick="navClick(event, 'Ocelové profily')">Specializované a&nbsp;sériové profily</a>
+        <a href="#" onclick="navClick(event, 'Zakázková kovovýroba')">Zakázková kovovýroba</a>
       </div>
 
       <div class="footer-col">
         <h4>Firma</h4>
         <a href="#" onclick="navClick(event, 'O společnosti')">O&nbsp;společnosti</a>
-        <a href="#" onclick="navClick(event, 'Blog')">Blog</a>
         <a href="#" onclick="navClick(event, 'Kariéra')">Kariéra</a>
         <a href="#" onclick="navClick(event, 'Kontakt')">Kontakt</a>
       </div>
@@ -923,6 +1003,12 @@
 
   document.getElementById('placeholder-back').addEventListener('click', function () {
     document.getElementById('placeholder-page').classList.remove('active');
+  });
+
+  /* LinkedIn – šipka jako statický UI prvek (wireframe) */
+  document.getElementById('li-next').addEventListener('click', function() {
+    this.style.opacity = '0.4';
+    setTimeout(() => { this.style.opacity = ''; }, 300);
   });
 </script>
 
