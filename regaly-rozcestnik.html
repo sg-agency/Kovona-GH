@@ -10,7 +10,7 @@
     a { text-decoration: none; color: inherit; }
 
     /* ===== STICKY NAV (sjednocená s HP) ===== */
-    .nav { position: sticky; top: 0; z-index: 1000; background: #F4F4F4; border-bottom: 1px solid #DDDDDD; height: 80px; display: flex; align-items: center; padding: 0 56px; }
+    .nav { position: sticky; top: 0; z-index: 1000; background: #F4F4F4; border-bottom: 1px solid #DDDDDD; height: 80px; display: flex; align-items: center; padding: 0 max(56px, calc((100% - 1440px) / 2)); }
     .nav-logo { color: #1A1A1A; font-weight: 800; font-size: 1.25rem; letter-spacing: 0.08em; margin-right: 72px; flex-shrink: 0; cursor: pointer; line-height: 1.15; display: flex; flex-direction: column; gap: 2px; }
     .nav-logo .logo-sub { font-weight: 400; font-size: 0.6rem; letter-spacing: 0.22em; color: #888; display: block; }
     .nav-logo-insy { font-size: 0.72rem; color: #444; font-weight: 400; letter-spacing: 0; }
@@ -33,17 +33,17 @@
     .lang-switch .active { color: #1A1A1A; }
 
     /* ===== BREADCRUMB ===== */
-    .breadcrumb { position: absolute; top: 0; left: 0; right: 0; padding: 20px 56px; font-size: 0.8rem; color: #1A1A1A; background: transparent; z-index: 5; }
+    .breadcrumb { position: absolute; top: 0; left: 0; right: 0; padding: 20px max(56px, calc((100% - 1440px) / 2)); font-size: 0.8rem; color: #1A1A1A; background: transparent; z-index: 5; }
     .breadcrumb a { color: #1A1A1A; }
     .breadcrumb a:hover { text-decoration: underline; }
 
     /* ===== HERO — text přímo na šedém podkladu ===== */
     .hero-container {
-      height: 420px;
+      height: 640px;
       background: #DCDCDC;
       display: flex;
       align-items: flex-end;
-      padding: 0 56px 56px;
+      padding: 0 max(56px, calc((100% - 1440px) / 2)) 56px;
       position: relative;
     }
     .hero-photo-label {
@@ -81,7 +81,7 @@
       top: 80px;
       z-index: 100;
     }
-    .tabs { display: flex; padding: 0 56px; gap: 48px; }
+    .tabs { display: flex; padding: 0 max(56px, calc((100% - 1440px) / 2)); gap: 48px; }
     .tab { padding: 20px 0; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
     .tab-title { display: block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #AAA; letter-spacing: 0.05em; }
     .tab-sub { display: block; font-size: 0.72rem; font-weight: 500; color: #BBB; margin-top: 3px; }
@@ -139,7 +139,7 @@
     .card-link { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #333; border-bottom: 1.5px solid #1A1A1A; padding-bottom: 1px; }
 
     /* ===== NAŠE REGÁLY — SEO sekce ===== */
-    .seo-section { background: #FFF; padding: 72px 56px; }
+    .seo-section { background: #FFF; padding: 72px max(56px, calc((100% - 1440px) / 2)); }
     .seo-inner { max-width: 1328px; margin: 0 auto; }
     .seo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
     .seo-img { width: 100%; aspect-ratio: 4/3; background: #EBEBEB; display: flex; align-items: center; justify-content: center; }
@@ -155,7 +155,7 @@
     /* ===== NABÍZÍME TAKÉ — 2 kompaktní karty bez obrázku ===== */
     .also-section {
       background: #F4F4F4;
-      padding: 72px 56px;
+      padding: 72px max(56px, calc((100% - 1440px) / 2));
     }
     .also-inner {
       max-width: 1328px;
@@ -194,14 +194,14 @@
     .btn-outline-dark { background: transparent; color: #1A1A1A; border-color: #888; }
     .btn-outline-dark:hover { background: #DCDCDC; }
 
-    .cta-banner { background: #E4E4E4; padding: 96px 56px; text-align: center; }
+    .cta-banner { background: #E4E4E4; padding: 96px max(56px, calc((100% - 1440px) / 2)); text-align: center; }
     .cta-banner h2 { font-size: 2.1rem; font-weight: 700; color: #1A1A1A; margin-bottom: 14px; }
     .cta-banner p { color: #666; font-size: 1rem; margin-bottom: 40px; }
     .cta-banner .btns { display: flex; gap: 12px; justify-content: center; }
 
     /* ===== FOOTER ===== */
-    footer { background: #525252; padding: 72px 56px 0; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; padding-bottom: 56px; }
+    footer { background: #525252; padding: 72px max(56px, calc((100% - 1440px) / 2)) 0; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 56px; padding-bottom: 56px; max-width: 1440px; margin: 0 auto; }
     .footer-logo { font-size: 1rem; font-weight: 800; color: #EEE; letter-spacing: 0.06em; margin-bottom: 16px; }
     .footer-tagline { font-size: 0.875rem; color: #999; line-height: 1.7; margin-bottom: 14px; }
     .footer-social-label { font-size: 0.72rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.08em; margin: 20px 0 10px; }
@@ -219,7 +219,7 @@
     .footer-col a.sub { padding-left: 14px; font-size: 0.825rem; color: #777; }
     .footer-col a.sub:hover { color: #AAA; }
     .footer-contact p, .footer-contact address { font-size: 0.875rem; color: #888; line-height: 1.85; font-style: normal; }
-    .footer-bottom { border-top: 1px solid #444; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom { border-top: 1px solid #444; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; max-width: 1440px; margin: 0 auto; }
     .footer-bottom span { font-size: 0.8rem; color: #777; }
   </style>
 </head>
