@@ -269,7 +269,8 @@
       background: #FFF;
       border: 1px solid #CCCCCC;
       padding: 16px 16px 0;
-      display: block;
+      display: flex;
+      flex-direction: column;
       color: inherit;
       text-decoration: none;
       cursor: pointer;
@@ -282,12 +283,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
     .bu-card:hover .bu-card-img { background: #CACACA; }
 
     .bu-card-body {
       padding: 20px 0 28px;
       margin-top: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
     }
     .bu-card-body h3 {
       font-size: 1.4rem;
@@ -298,12 +303,14 @@
       font-size: 0.875rem;
       color: #555;
       line-height: 1.65;
-      margin-bottom: 18px;
+      flex: 1;
     }
     .bu-card-link {
       font-size: 0.875rem;
       font-weight: 600;
       color: #333;
+      margin-top: 18px;
+      display: block;
     }
     .bu-card-link:hover { color: #777; }
 
@@ -523,6 +530,10 @@
       line-height: 1.7;
       margin-bottom: 14px;
     }
+    .footer-social-label { font-size: 0.72rem; font-weight: 700; color: #AAA; text-transform: uppercase; letter-spacing: 0.08em; margin: 20px 0 10px; }
+    .footer-social-icons { display: flex; gap: 8px; margin-bottom: 0; }
+    .footer-social-icons a { display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1px solid #444; color: #888; text-decoration: none; }
+    .footer-social-icons a:hover { border-color: #888; color: #CCC; }
 
     .footer-group {
       font-size: 0.85rem;
@@ -893,6 +904,12 @@
       <div>
         <div class="footer-logo">KOVONA SYSTEM</div>
         <p class="footer-tagline">Sériová kovovýroba z&nbsp;Českého Těšína od roku 1904.</p>
+        <p class="footer-social-label">Sledujte nás na našich sítích</p>
+        <div class="footer-social-icons">
+          <a href="#" title="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="2" y="5.5" width="20" height="13" rx="3" stroke="currentColor" stroke-width="1.5"/><polygon points="10,9.5 10,14.5 15.5,12" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/company/kovonasystem" title="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="7.8" cy="8.8" r="1.1" fill="currentColor"/><line x1="7.8" y1="11.2" x2="7.8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 17v-3.2c0-1.2.9-2.1 2-2.1s2 .9 2 2.1V17" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/><line x1="12" y1="11.2" x2="12" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+          <a href="#" title="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M17 2h-3a5 5 0 0 0-5 5v3H6v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
         <p class="footer-group">Jsme součástí Industrial Synergy Group</p>
         <ul class="footer-group-list">
           <li><strong>Industrial Synergy</strong> — strategické řízení a rozvoj skupiny</li>
