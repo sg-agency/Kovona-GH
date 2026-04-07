@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Regál ELEGANT — Kovona System</title>
+  <title>Regál PRAKTIK — Kovona System</title>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: system-ui, -apple-system, sans-serif; color: #1A1A1A; background: #F4F4F4; line-height: 1.5; }
@@ -32,11 +32,6 @@
     .lang-switch { font-size: 0.85rem; color: #888; letter-spacing: 0.05em; }
     .lang-switch .active { color: #1A1A1A; }
 
-    /*
-      LAYOUT: Both gallery and right panel sit on the same #F4F4F4 canvas.
-      Gallery is sticky-left. Right panel is the white scrolling box.
-      margin-right:48px on right panel = same gap as gallery left padding (48px).
-    */
     .product-wrap {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
@@ -55,7 +50,6 @@
       position: sticky;
       top: 80px;
       height: calc(100vh - 72px);
-      /* breadcrumb-bar (~37px) scrolls away, gallery sticks just below nav */
       overflow: hidden;
       align-self: start;
     }
@@ -82,7 +76,6 @@
     .product-info { padding: 0 36px 24px; }
     .tag { font-size: 0.64rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.12em; color: #888; display: block; margin-bottom: 16px; }
     .product-title { font-size: 1.75rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.05; margin-bottom: 24px; }
-    .product-desc { color: #666; font-size: 0.84rem; margin-bottom: 24px; line-height: 1.6; }
 
     .highlights-list { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
     .highlight-item { font-size: 0.82rem; font-weight: 400; background: #F2F2F2; padding: 7px 14px; color: #1A1A1A; white-space: nowrap; }
@@ -101,9 +94,6 @@
     .dim-label { font-size: 0.6rem; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
     .dims-note { font-size: 0.66rem; color: #AAA; margin-top: 6px; line-height: 1.4; }
 
-    .why-badges { display: flex; flex-wrap: wrap; gap: 6px; }
-    .why-badge { font-size: 0.68rem; background: #F2F2F2; padding: 4px 8px; color: #444; border-radius: 2px; }
-
     .set-list { border-top: 1px solid #EBEBEB; }
     .set-row { display: flex; align-items: center; justify-content: space-between; padding: 8px 0 8px 16px; border-bottom: 1px solid #EBEBEB; cursor: pointer; gap: 8px; transition: background 0.1s, padding-left 0.1s; position: relative; }
     .set-row:hover { background: #FAFAFA; padding-left: 20px; }
@@ -113,8 +103,6 @@
     .set-row-name { font-size: 0.81rem; font-weight: 700; display: block; }
     .set-row-sub { font-size: 0.63rem; color: #AAA; display: block; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .set-row.active .set-row-name { color: #1A1A1A; }
-    .set-row-price { font-size: 0.73rem; color: #999; white-space: nowrap; flex-shrink: 0; }
-    .set-row.active .set-row-price { font-weight: 700; color: #333; }
 
     .specs-mini { width: 100%; border-collapse: collapse; font-size: 0.73rem; }
     .specs-mini td { padding: 3px 6px; border-bottom: 1px solid #F4F4F4; vertical-align: top; line-height: 1.35; }
@@ -131,6 +119,7 @@
     .konfig-sub { color: #666; font-size: 0.84rem; margin-bottom: 26px; }
 
     .config-section { padding-top: 18px; border-top: 1px solid #EBEBEB; margin-bottom: 20px; }
+    .config-sublabel { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #AAA; display: block; margin-bottom: 6px; }
     .config-label { font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #1A1A1A; display: block; margin-bottom: 10px; }
 
     .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -141,13 +130,6 @@
     .chip.disabled { opacity: 0.3; cursor: not-allowed; border-style: dashed; }
     .chip.disabled:hover { border-color: #DDD; background: #FFF; color: inherit; }
 
-    .swatch-row { display: flex; gap: 14px; }
-    .swatch-item { display: flex; flex-direction: column; align-items: center; gap: 5px; cursor: pointer; }
-    .swatch-circle { width: 32px; height: 32px; border-radius: 50%; border: 1px solid #DDD; transition: box-shadow 0.15s; }
-    .swatch-item.active .swatch-circle { box-shadow: 0 0 0 2px #FFF, 0 0 0 4px #1A1A1A; }
-    .swatch-label { font-size: 0.65rem; color: #666; }
-    .swatch-item.disabled { opacity: 0.26; cursor: not-allowed; pointer-events: none; }
-
     .modules-list { display: flex; flex-direction: column; gap: 5px; }
     .module-item { display: flex; align-items: center; gap: 10px; padding: 9px 12px; border: 1px solid #DDD; cursor: pointer; transition: border-color 0.15s; user-select: none; background: #FFF; }
     .module-item:hover { border-color: #999; }
@@ -155,7 +137,6 @@
     .module-texts { flex: 1; }
     .module-name { font-size: 0.81rem; font-weight: 600; }
     .module-desc { font-size: 0.66rem; color: #999; margin-top: 1px; }
-    .module-price { font-size: 0.77rem; font-weight: 700; color: #444; white-space: nowrap; margin-left: auto; }
 
     .summary-box { border: 1px solid #DDD; padding: 16px 18px; margin-top: 22px; background: #FFF; }
     .summary-label { font-size: 0.62rem; text-transform: uppercase; color: #999; letter-spacing: 0.08em; margin-bottom: 8px; display: block; }
@@ -163,15 +144,6 @@
     .summary-list li { font-size: 0.84rem; font-weight: 600; color: #1A1A1A; padding: 2px 0 2px 16px; position: relative; line-height: 1.5; }
     .summary-list li::before { content: '—'; position: absolute; left: 0; color: #CCC; font-weight: 400; }
 
-    .price-box { padding: 16px 18px; margin-top: 8px; background: #F6F6F6; border-left: 3px solid #1A1A1A; }
-    .price-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: #999; display: block; margin-bottom: 3px; }
-    .price-value { font-size: 1.75rem; font-weight: 800; display: block; letter-spacing: -0.02em; color: #1A1A1A; }
-    .price-note { font-size: 0.66rem; color: #BBB; margin-top: 3px; display: block; }
-    .qty-row { display: flex; align-items: center; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px solid #E4E4E4; }
-    .qty-label { font-size: 0.74rem; color: #555; flex-shrink: 0; }
-    .qty-input { width: 52px; border: 1px solid #CCC; padding: 4px 6px; font-size: 0.88rem; font-weight: 700; text-align: center; font-family: inherit; background: #FFF; }
-    .qty-input:focus { outline: none; border-color: #1A1A1A; }
-    .qty-total { font-size: 0.76rem; color: #555; font-weight: 600; }
     .cta-btn { width: 100%; background: #1A1A1A; color: #FFF; border: none; padding: 14px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: opacity 0.15s; margin-top: 12px; display: block; }
     .cta-btn:hover { opacity: 0.85; }
     .cta-btn-sec { width: 100%; background: #FFF; color: #1A1A1A; border: 1px solid #1A1A1A; padding: 12px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; transition: background 0.15s; margin-top: 8px; display: block; }
@@ -185,6 +157,10 @@
     .chip-vis .chip-text { font-size: 0.8rem; font-weight: 600; padding: 5px 6px 2px; display: block; }
     .chip-vis small { opacity: 0.65; font-size: 0.62rem; display: block; padding: 0 5px 6px; line-height: 1.3; white-space: normal; }
     .chip-vis.active .chip-text { color: #FFF; }
+    .nosnost-note { font-size: 0.66rem; color: #555; margin-top: 6px; line-height: 1.4; background: #F2F2F2; border-left: 2px solid #AAA; padding: 4px 8px; display: none; }
+    .chips-row { display: flex; gap: 6px; }
+    .chips-row + .chips-row { margin-top: 6px; }
+    .chips-row .chip { flex: 1; text-align: center; }
 
     html { scroll-behavior: smooth; }
 
@@ -249,7 +225,7 @@
         <div class="mega-col">
           <h4>Regálové systémy</h4>
           <a href="regaly-elegant.html">ELEGANT</a>
-          <a href="#">PRAKTIK</a>
+          <a href="regaly-praktik.html">PRAKTIK</a>
           <a href="#">HEAVY</a>
           <a href="#">DRUMY</a>
           <a href="#">FUTUR</a>
@@ -285,7 +261,7 @@
 
 <div class="breadcrumb-bar">
   <div class="breadcrumb">
-    <a href="index.html">Domů</a> / <a href="regaly-rozcestnik.html">Regálové systémy</a> / ELEGANT
+    <a href="index.html">Domů</a> / <a href="regaly-rozcestnik.html">Regálové systémy</a> / PRAKTIK
   </div>
 </div>
 
@@ -295,9 +271,9 @@
     <div class="main-view" id="main-view">
       <span id="main-label">Pohled zepředu</span>
       <div id="photo-cfg" class="photo-cfg">
-        <span class="photo-cfg-line">Set: Living Gallery</span>
-        <span class="photo-cfg-line">Police: MDF · Larch</span>
-        <span class="photo-cfg-line">Deco panel: Matrix</span>
+        <span class="photo-cfg-line">Set: Workshop Organizer</span>
+        <span class="photo-cfg-line">Rozměr: 900 × 450 mm · výška 1800 mm</span>
+        <span class="photo-cfg-line">Police: MDF</span>
       </div>
       <span class="main-view-hint">Kliknutím na náhled se fotka změní</span>
     </div>
@@ -305,8 +281,8 @@
       <div class="thumb active" onclick="switchThumb('Pohled zepředu',this)">Pohled<br>zepředu</div>
       <div class="thumb" onclick="switchThumb('Detail spoje',this)">Detail<br>spoje</div>
       <div class="thumb" onclick="switchThumb('Reálné prostředí',this)">Reálné<br>prostředí</div>
-      <div class="thumb" onclick="switchThumb('Stagovaný záběr',this)">Stagovaný<br>záběr</div>
-      <div class="thumb" onclick="switchThumb('Deco panel — detail',this)">Deco panel<br>detail</div>
+      <div class="thumb" onclick="switchThumb('Workshop set',this)">Workshop<br>set</div>
+      <div class="thumb" onclick="switchThumb('Doplňky — detail',this)">Doplňky<br>detail</div>
     </div>
     <div class="gallery-origin">Vyrobeno v České republice · od roku 1904</div>
   </div>
@@ -314,28 +290,29 @@
   <div class="right-panel">
 
     <div class="product-info">
-      <span class="tag">Modulární interiérový systém</span>
-      <h1 class="product-title">Regál ELEGANT</h1>
+      <span class="tag">Policový systém pro dílnu a sklad</span>
+      <h1 class="product-title">Regál PRAKTIK</h1>
+
       <div class="highlights-list">
-        <div class="highlight-item">Určeno do obývacích prostor, ložnic a pracoven</div>
-        <div class="highlight-item">Designové řešení s architektonickými detaily</div>
-        <div class="highlight-item">Bezšroubový spoj s&nbsp;ukrytými montážními otvory</div>
-        <div class="highlight-item">Deco panely Matrix &amp; Pixel</div>
-        <div class="highlight-item">Volba povrchu MDF (Larch, Elm)</div>
+        <div class="highlight-item">Určeno pro dílnu, sklad, garáž a hobby prostor</div>
+        <div class="highlight-item">Praktické řešení pro pracovní a skladovací prostory</div>
+        <div class="highlight-item">Bezšroubový nýtovací systém — montáž bez nářadí</div>
+        <div class="highlight-item">Rozšiřitelné doplňky: panely, zásuvky, háčky, tyč na oblečení</div>
+        <div class="highlight-item">Povrch rámu: Matte Black</div>
       </div>
 
       <div class="info-section">
         <span class="info-section-label">Parametry</span>
         <div class="dims">
-          <div class="dim-item"><span class="dim-icon">↔</span><span class="dim-value">90 cm</span><span class="dim-label">šířka</span></div>
-          <div class="dim-item"><span class="dim-icon">↕</span><span class="dim-value">196 cm</span><span class="dim-label">výška</span></div>
-          <div class="dim-item"><span class="dim-icon">⇥</span><span class="dim-value">45 cm</span><span class="dim-label">hloubka</span></div>
+          <div class="dim-item"><span class="dim-icon">↔</span><span class="dim-value">75–180 cm</span><span class="dim-label">šířka</span></div>
+          <div class="dim-item"><span class="dim-icon">↕</span><span class="dim-value">180 cm</span><span class="dim-label">výška</span></div>
+          <div class="dim-item"><span class="dim-icon">⇥</span><span class="dim-value">35–60 cm</span><span class="dim-label">hloubka</span></div>
         </div>
         <div class="dims">
-          <div class="dim-item"><span class="dim-icon">⚖</span><span class="dim-value">150/250 kg</span><span class="dim-label">nosnost/úroveň</span></div>
+          <div class="dim-item"><span class="dim-icon">⚖</span><span class="dim-value">150–300 kg</span><span class="dim-label">nosnost/úroveň</span></div>
         </div>
+        <p class="dims-note">Nosnost závisí na kombinaci zvolených rozměrů a typu police</p>
       </div>
-
 
       <nav class="section-tabs">
         <a href="#volba-setu" class="section-tab active">Nabídka setů</a>
@@ -347,13 +324,12 @@
       <div id="volba-setu" class="info-section">
         <h2 class="section-heading">Nabídka setů</h2>
         <div class="set-list">
-          <div class="set-row active" onclick="selectSet('Living Gallery',this)"><div class="set-row-left"><span class="set-row-name">Living Gallery</span><span class="set-row-sub">Deco panely + MDF police · obývák, jídelna, knihovna</span></div></div>
-          <div class="set-row" onclick="selectSet('Living Balance',this)"><div class="set-row-left"><span class="set-row-name">Living Balance</span><span class="set-row-sub">Deco panely + 1 zásuvkový modul · obývák, ložnice</span></div></div>
-          <div class="set-row" onclick="selectSet('Living Organizer',this)"><div class="set-row-left"><span class="set-row-name">Living Organizer</span><span class="set-row-sub">Max. úložný prostor — 3 zásuvky · dětský pokoj, šatna</span></div></div>
-          <div class="set-row" onclick="selectSet('Wardrobe',this)"><div class="set-row-left"><span class="set-row-name">Wardrobe</span><span class="set-row-sub">Tyč na oblečení + háčky + zásuvky · šatna, předsíň</span></div></div>
-          <div class="set-row" onclick="selectSet('Hallway',this)"><div class="set-row-left"><span class="set-row-name">Hallway</span><span class="set-row-sub">Věšák + mesh police na boty · chodba, vstupní hala</span></div></div>
-          <div class="set-row" onclick="selectSet('Living Shelving',this)"><div class="set-row-left"><span class="set-row-name">Living Shelving</span><span class="set-row-sub">Čistý policový systém · obývák, pracovna, knihovna</span></div></div>
-          <div class="set-row" onclick="selectSet('Utility Shelving',this)"><div class="set-row-left"><span class="set-row-name">Utility Shelving</span><span class="set-row-sub">Full metal · spíž, technická místnost, garáž</span></div></div>
+          <div class="set-row active" onclick="selectSet('Workshop Organizer',this)"><div class="set-row-left"><span class="set-row-name">Workshop Organizer</span><span class="set-row-sub">Perforované panely + sada držáků nářadí · dílna, hobby</span></div></div>
+          <div class="set-row" onclick="selectSet('Workshop Organizer Pro',this)"><div class="set-row-left"><span class="set-row-name">Workshop Organizer Pro</span><span class="set-row-sub">Perforované panely + nářadí + zásuvkový modul · profesionální dílna</span></div></div>
+          <div class="set-row" onclick="selectSet('Workshop Garment',this)"><div class="set-row-left"><span class="set-row-name">Workshop Garment</span><span class="set-row-sub">Tyč na oblečení + mesh police + boční lišta · šatna v garáži</span></div></div>
+          <div class="set-row" onclick="selectSet('Multi-Purpose Storage',this)"><div class="set-row-left"><span class="set-row-name">Multi-Purpose Storage</span><span class="set-row-sub">4 MDF police + 3 kovové zásuvky · sklad, spíž, provoz</span></div></div>
+          <div class="set-row" onclick="selectSet('Metal &amp; Mesh',this)"><div class="set-row-left"><span class="set-row-name">Metal &amp; Mesh</span><span class="set-row-sub">5 kovových / mesh polic · těžší zátěž, ventilace</span></div></div>
+          <div class="set-row" onclick="selectSet('Instant Access Rail',this)"><div class="set-row-left"><span class="set-row-name">Instant Access Rail</span><span class="set-row-sub">5 MDF polic + boční lišta s háčky · rychlý přístup</span></div></div>
         </div>
       </div>
 
@@ -361,65 +337,73 @@
 
     <div id="konfigurator" class="konfig-section">
       <h2 class="konfig-heading">Konfigurace</h2>
-      <p class="konfig-sub">Zvolte konkrétní set, typy a povrchy polic i rozšiřující moduly.</p>
+      <p class="konfig-sub">Zvolte konkrétní set, jeho rozměry i rozšiřující moduly.</p>
 
       <div class="config-section">
         <span class="config-label">1. Set</span>
         <select class="set-select" id="konfig-set" onchange="selectSetById(this.value)">
-          <option value="Living Gallery">Living Gallery — obývák / jídelna / knihovna</option>
-          <option value="Living Balance">Living Balance — obývák / ložnice</option>
-          <option value="Living Organizer">Living Organizer — dětský pokoj / šatna</option>
-          <option value="Wardrobe">Wardrobe — šatna</option>
-          <option value="Hallway">Hallway — chodba / předsíň</option>
-          <option value="Living Shelving">Living Shelving — pracovna / knihovna</option>
-          <option value="Utility Shelving">Utility Shelving — spíž / garáž / sklad</option>
+          <option value="Workshop Organizer">Workshop Organizer — dílna / hobby</option>
+          <option value="Workshop Organizer Pro">Workshop Organizer Pro — profesionální dílna</option>
+          <option value="Workshop Garment">Workshop Garment — šatna v garáži</option>
+          <option value="Multi-Purpose Storage">Multi-Purpose Storage — sklad / spíž</option>
+          <option value="Metal &amp; Mesh">Metal &amp; Mesh — těžší zátěž / ventilace</option>
+          <option value="Instant Access Rail">Instant Access Rail — rychlý přístup</option>
         </select>
       </div>
 
+      <div class="config-section" id="sec-rozmery">
+        <span class="config-label">2. Rozměry</span>
+        <span class="config-sublabel">Výška</span>
+        <div class="chips" id="chips-vyska">
+          <div class="chip active" style="cursor:default;">1800 mm</div>
+        </div>
+        <span class="config-sublabel" style="margin-top:8px;">Šířka</span>
+        <div id="chips-sirka">
+          <div class="chips-row">
+            <div class="chip" onclick="selectChip(this,'sirka')">750 mm</div>
+            <div class="chip active" onclick="selectChip(this,'sirka')">900 mm</div>
+            <div class="chip" onclick="selectChip(this,'sirka')">1000 mm</div>
+          </div>
+          <div class="chips-row">
+            <div class="chip" onclick="selectChip(this,'sirka')">1200 mm</div>
+            <div class="chip" onclick="selectChip(this,'sirka')">1500 mm</div>
+            <div class="chip" onclick="selectChip(this,'sirka')">1800 mm</div>
+          </div>
+        </div>
+        <span class="config-sublabel" style="margin-top:8px;">Hloubka</span>
+        <div class="chips-row" id="chips-hloubka">
+          <div class="chip" onclick="selectChip(this,'hloubka')">350 mm</div>
+          <div class="chip active" onclick="selectChip(this,'hloubka')">450 mm</div>
+          <div class="chip" onclick="selectChip(this,'hloubka')">600 mm</div>
+        </div>
+      </div>
+
       <div class="config-section" id="sec-police">
-        <span class="config-label">2. Typ polic</span>
+        <span class="config-label">3. Typ polic</span>
         <div class="chips">
-          <div class="chip chip-vis active" data-val="MDF" onclick="selectChip(this,'police')"><div class="chip-img"></div><span class="chip-text">MDF</span><small>Nosnost 250 kg/úroveň</small></div>
+          <div class="chip chip-vis active" data-val="MDF" onclick="selectChip(this,'police')"><div class="chip-img"></div><span class="chip-text">MDF</span><small>Nosnost 150–300 kg/úroveň</small></div>
           <div class="chip chip-vis" data-val="Metal" onclick="selectChip(this,'police')"><div class="chip-img"></div><span class="chip-text">Metal</span><small>Nosnost 150 kg/úroveň</small></div>
           <div class="chip chip-vis" data-val="Mesh" onclick="selectChip(this,'police')"><div class="chip-img"></div><span class="chip-text">Mesh</span><small>Nosnost 150 kg/úroveň</small></div>
         </div>
-      </div>
-
-      <div class="config-section" id="sec-povrch">
-        <span class="config-label">3. Povrch MDF polic</span>
-        <div class="swatch-row">
-          <div class="swatch-item active" onclick="selectSwatch(this,'Larch')"><div class="swatch-circle" style="background:#C8B89A;"></div><span class="swatch-label">Larch <span style="font-weight:400;color:#AAA;">(modřín)</span></span></div>
-          <div class="swatch-item" onclick="selectSwatch(this,'Elm')"><div class="swatch-circle" style="background:#A8A898;"></div><span class="swatch-label">Elm <span style="font-weight:400;color:#AAA;">(jilm)</span></span></div>
-          <div class="swatch-item" onclick="selectSwatch(this,'Custom')"><div class="swatch-circle" style="background:repeating-linear-gradient(45deg,#DDD 0,#DDD 3px,#FFF 3px,#FFF 6px);"></div><span class="swatch-label">Custom</span></div>
-        </div>
-      </div>
-
-      <div class="config-section" id="sec-deco">
-        <span class="config-label">4. Deco panel</span>
-        <div class="chips">
-          <div class="chip chip-vis active" data-val="Bez panelu" onclick="selectChip(this,'deco')"><div class="chip-img" style="background:#E8E8E8;"></div><span class="chip-text">Bez panelu</span></div>
-          <div class="chip chip-vis" data-val="Matrix" onclick="selectChip(this,'deco')"><div class="chip-img"></div><span class="chip-text">Matrix</span></div>
-          <div class="chip chip-vis" data-val="Pixel" onclick="selectChip(this,'deco')"><div class="chip-img"></div><span class="chip-text">Pixel</span></div>
-        </div>
+        <p id="nosnost-note" class="nosnost-note"></p>
       </div>
 
       <div class="config-section">
-        <span class="config-label">5. Rozšiřující moduly <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#AAA;font-size:0.9em;">(volitelně)</span></span>
+        <span class="config-label">4. Rozšiřující moduly <span style="font-weight:400;text-transform:none;letter-spacing:0;color:#AAA;font-size:0.9em;">(volitelně)</span></span>
         <div class="modules-list">
-          <label class="module-item"><input type="checkbox" onchange="toggleModule('drawer1',0,this)"><div class="module-texts"><div class="module-name">Drawer Module — 1 zásuvka</div><div class="module-desc">Uzavřené úložné moduly bez viditelných úchytů · 15 kg</div></div></label>
-          <label class="module-item"><input type="checkbox" onchange="toggleModule('drawer3',0,this)"><div class="module-texts"><div class="module-name">Drawer Module — 3 zásuvky</div><div class="module-desc">Maximální úložná kapacita · 3 × 15 kg</div></div></label>
-          <label class="module-item"><input type="checkbox" onchange="toggleModule('siderail',0,this)"><div class="module-texts"><div class="module-name">Side Rail + háčky</div><div class="module-desc">Minimalistická boční lišta s háčky · 5 kg / háček</div></div></label>
-          <label class="module-item"><input type="checkbox" onchange="toggleModule('closetrail',0,this)"><div class="module-texts"><div class="module-name">Closet Rail</div><div class="module-desc">Integrovaná tyč na oblečení · nosnost 15 kg</div></div></label>
-          <label class="module-item"><input type="checkbox" onchange="toggleModule('led',0,this)"><div class="module-texts"><div class="module-name">LED osvětlení</div><div class="module-desc">Podlicová LED páska · teplá bílá · bezdrátový spínač</div></div></label>
+          <label class="module-item"><input type="checkbox" onchange="toggleModule('perfpanel',this)"><div class="module-texts"><div class="module-name">Perforovaný panel + sada nářadí</div><div class="module-desc">Nástěnný systém s držáky klíčů, šroubováků a sprejů</div></div></label>
+          <label class="module-item"><input type="checkbox" onchange="toggleModule('drawer',this)"><div class="module-texts"><div class="module-name">Zásuvkový modul</div><div class="module-desc">Uzavřený kovový šuplík s plynulým chodem · 15 kg</div></div></label>
+          <label class="module-item"><input type="checkbox" onchange="toggleModule('closetrail',this)"><div class="module-texts"><div class="module-name">Closet Rail</div><div class="module-desc">Tyč na oblečení · nosnost 15 kg</div></div></label>
+          <label class="module-item"><input type="checkbox" onchange="toggleModule('siderail',this)"><div class="module-texts"><div class="module-name">Boční lišta s háčky</div><div class="module-desc">Přestavitelné háčky po stranách regálu · 5 kg / háček</div></div></label>
         </div>
       </div>
 
       <div class="summary-box">
         <span class="summary-label">Vaše konfigurace</span>
         <ul class="summary-list">
-          <li id="sum-set">Set: Living Gallery</li>
-          <li id="sum-police">Police: MDF · Larch</li>
-          <li id="sum-deco">Deco panel: bez</li>
+          <li id="sum-set">Set: Workshop Organizer</li>
+          <li id="sum-rozmery">Rozměry: 900 × 450 mm</li>
+          <li id="sum-police">Police: MDF</li>
           <li id="sum-modules">Moduly: —</li>
         </ul>
       </div>
@@ -432,19 +416,19 @@
 
     <div id="technicka-spec" class="spec-section">
       <h2 class="section-heading">Technická specifikace</h2>
-      <p class="section-sub">Rozměry, nosnosti a povrchové úpravy systému ELEGANT</p>
+      <p class="section-sub">Rozměry, nosnosti a povrchové úpravy systému PRAKTIK</p>
       <table class="specs-mini">
-        <tr><td>Rozměr (š × v × h)</td><td>900 × 1960 × 450 mm</td></tr>
+        <tr><td>Výška</td><td>1800 mm (jednotná pro všechny varianty)</td></tr>
+        <tr><td>Šířka</td><td>750 / 900 / 1000 / 1200 / 1500 / 1800 mm</td></tr>
+        <tr><td>Hloubka</td><td>350 / 450 / 600 mm (dle varianty šířky)</td></tr>
+        <tr><td>Nosnost — MDF police</td><td>150–300 kg / úroveň (dle rozměru)</td></tr>
+        <tr><td>Nosnost — Metal / Mesh</td><td>150 kg / úroveň</td></tr>
+        <tr><td>Nosnost — zásuvka</td><td>15 kg / zásuvka</td></tr>
+        <tr><td>Nosnost — closet rail</td><td>15 kg</td></tr>
+        <tr><td>Nosnost — háček</td><td>5 kg / háček</td></tr>
         <tr><td>Povrch rámu</td><td>Matte Black</td></tr>
         <tr><td>Spoj</td><td>Screwless rivet — bez šroubů, bez vrtání</td></tr>
-        <tr><td>Montáž</td><td>Bez nářadí · cca 15 min</td></tr>
-        <tr><td>Nosnost MDF police</td><td>250 kg / úroveň</td></tr>
-        <tr><td>Nosnost Metal / Mesh</td><td>150 kg / úroveň</td></tr>
-        <tr><td>Nosnost zásuvka</td><td>15 kg / zásuvka</td></tr>
-        <tr><td>Nosnost closet rail</td><td>15 kg</td></tr>
-        <tr><td>Nosnost háček</td><td>5 kg</td></tr>
-        <tr><td>Povrch MDF</td><td>Larch, Elm (+ custom na dotaz)</td></tr>
-        <tr><td>Záruka</td><td>10 let</td></tr>
+        <tr><td>Montáž</td><td>Bez nářadí (zásuvka a closet rail se šrouby)</td></tr>
       </table>
     </div>
 
@@ -452,7 +436,7 @@
       <h2 class="section-heading">Ke stažení</h2>
       <p class="section-sub">Technické podklady, montážní dokumentace a certifikáty</p>
       <div class="downloads-grid">
-        <a href="#" class="dl-card"><div class="dl-icon">PDF</div><div><span class="dl-name">Katalogový list ELEGANT</span><span class="dl-size">PDF · produktová dokumentace</span></div></a>
+        <a href="#" class="dl-card"><div class="dl-icon">PDF</div><div><span class="dl-name">Katalogový list PRAKTIK</span><span class="dl-size">PDF · produktová dokumentace</span></div></a>
         <a href="#" class="dl-card"><div class="dl-icon">PDF</div><div><span class="dl-name">Návod k montáži</span><span class="dl-size">PDF · postup sestavení bez nářadí</span></div></a>
         <a href="#" class="dl-card"><div class="dl-icon">DXF</div><div><span class="dl-name">3D Model pro architekty</span><span class="dl-size">DXF · technický výkres</span></div></a>
         <a href="#" class="dl-card"><div class="dl-icon">PDF</div><div><span class="dl-name">Certifikace nosnosti</span><span class="dl-size">PDF · atesty a certifikáty</span></div></a>
@@ -506,12 +490,40 @@
 </footer>
 
 <script>
-const SETS={'Living Gallery':{base:18900,police:['MDF'],deco:true},'Living Balance':{base:21500,police:['MDF'],deco:true},'Living Organizer':{base:23900,police:['MDF','Metal'],deco:false},'Wardrobe':{base:19900,police:['MDF','Metal'],deco:false},'Hallway':{base:16900,police:['Mesh','Metal'],deco:false},'Living Shelving':{base:14900,police:['MDF'],deco:false},'Utility Shelving':{base:12900,police:['Metal','Mesh'],deco:false}};
-const SET_VIEWS={'Living Gallery':'Living Gallery · obývák / jídelna','Living Balance':'Living Balance · obývák / ložnice','Living Organizer':'Living Organizer · dětský pokoj','Wardrobe':'Wardrobe · šatna','Hallway':'Hallway · chodba / předsíň','Living Shelving':'Living Shelving · pracovna / knihovna','Utility Shelving':'Utility Shelving · spíž / garáž'};
-let cfg={set:'Living Gallery',police:'MDF',povrch:'Larch',deco:'Bez panelu',modules:{}};
-const PHOTO_CFG_E={
-  'Pohled zepředu':['Set: Living Gallery','Police: MDF · Larch','Deco panel: Matrix'],
+const SETS={
+  'Workshop Organizer':     {police:['MDF','Metal']},
+  'Workshop Organizer Pro': {police:['MDF','Metal']},
+  'Workshop Garment':       {police:['Metal','Mesh']},
+  'Multi-Purpose Storage':  {police:['MDF']},
+  'Metal & Mesh':           {police:['Metal','Mesh']},
+  'Instant Access Rail':    {police:['MDF','Metal']}
 };
+const SET_VIEWS={
+  'Workshop Organizer':     'Workshop Organizer · dílna',
+  'Workshop Organizer Pro': 'Workshop Organizer Pro · profesionální dílna',
+  'Workshop Garment':       'Workshop Garment · šatna v garáži',
+  'Multi-Purpose Storage':  'Multi-Purpose Storage · sklad',
+  'Metal & Mesh':           'Metal & Mesh · těžší zátěž',
+  'Instant Access Rail':    'Instant Access Rail · rychlý přístup'
+};
+const PHOTO_CFG_P={
+  'Pohled zepředu':['Set: Workshop Organizer','Rozměr: 900 × 450 mm · výška 1800 mm','Police: MDF'],
+};
+const DIMS_COMPAT={
+  '750 mm': ['350 mm','450 mm'],
+  '900 mm': ['350 mm','450 mm'],
+  '1000 mm':['350 mm','450 mm'],
+  '1200 mm':['350 mm','450 mm','600 mm'],
+  '1500 mm':['450 mm','600 mm'],
+  '1800 mm':['450 mm','600 mm'],
+};
+const MDF_NOSNOST={
+  '750 mm':300,'900 mm':275,'1000 mm':250,
+  '1200 mm':250,'1500 mm':150,'1800 mm':150,
+};
+let cfg={set:'Workshop Organizer',sirka:'900 mm',hloubka:'450 mm',police:'MDF',modules:{}};
+
+function chipVal(c){return c.dataset.val||c.childNodes[0].textContent.trim();}
 let photoLocked=false;
 function hidePhotoCfg(){photoLocked=true;const pc=document.getElementById('photo-cfg');if(pc)pc.style.display='none';}
 function switchThumb(l,el){
@@ -520,75 +532,93 @@ function switchThumb(l,el){
   el.classList.add('active');
   if(l!=='Pohled zepředu'||photoLocked){hidePhotoCfg();}
 }
+function applyDimsRules(sirka){
+  const valid=DIMS_COMPAT[sirka]||['350 mm','450 mm','600 mm'];
+  document.querySelectorAll('#chips-hloubka .chip').forEach(c=>{
+    if(valid.includes(c.textContent.trim())){c.classList.remove('disabled');}
+    else{c.classList.add('disabled');c.classList.remove('active');}
+  });
+  const actH=document.querySelector('#chips-hloubka .chip.active:not(.disabled)');
+  if(!actH){const fv=document.querySelector('#chips-hloubka .chip:not(.disabled)');if(fv){fv.classList.add('active');cfg.hloubka=fv.textContent.trim();}}
+  updateNosnostNote();
+  updateSummary();
+}
+function updateNosnostNote(){
+  const note=document.getElementById('nosnost-note');
+  if(!note)return;
+  if(cfg.police==='MDF'){
+    const nosnost=MDF_NOSNOST[cfg.sirka];
+    if(nosnost){note.textContent='Pro tento rozměr je nosnost MDF police '+nosnost+' kg/úroveň.';note.style.display='block';}
+  } else {
+    note.style.display='none';
+  }
+}
 function selectSet(name,el){
   cfg.set=name;
   hidePhotoCfg();
   document.querySelectorAll('.set-row').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   const mv=document.getElementById('main-view');
-  mv.classList.remove('flash');
-  void mv.offsetWidth;
-  mv.classList.add('flash');
+  mv.classList.remove('flash');void mv.offsetWidth;mv.classList.add('flash');
   document.getElementById('main-label').textContent=SET_VIEWS[name]||name;
   document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
   document.querySelector('.thumb')?.classList.add('active');
   const ks=document.getElementById('konfig-set');
   if(ks) ks.value=name;
-  applySetRules(name);updateSummary();updatePrice();
+  applySetRules(name);updateSummary();
 }
 function selectSetById(name){
   const row=[...document.querySelectorAll('.set-row')].find(r=>r.querySelector('.set-row-name')?.textContent.trim()===name);
   if(row) selectSet(name,row);
 }
-function chipVal(c){return c.dataset.val||c.childNodes[0].textContent.trim();}
 function applySetRules(sn){
   const r=SETS[sn];
-  document.querySelectorAll('#sec-police .chip').forEach(c=>{const t=chipVal(c);r.police.includes(t)?c.classList.remove('disabled'):(c.classList.add('disabled'),c.classList.remove('active'));});
+  document.querySelectorAll('#sec-police .chip').forEach(c=>{
+    const t=chipVal(c);
+    r.police.includes(t)?c.classList.remove('disabled'):(c.classList.add('disabled'),c.classList.remove('active'));
+  });
   const ap=document.querySelector('#sec-police .chip.active:not(.disabled)');
-  if(!ap){const fv=document.querySelector('#sec-police .chip:not(.disabled)');if(fv){fv.classList.add('active');cfg.police=chipVal(fv);}}else{cfg.police=chipVal(ap);}
-  const m=r.police.includes('MDF');
-  document.querySelectorAll('#sec-povrch .swatch-item').forEach(s=>m?s.classList.remove('disabled'):s.classList.add('disabled'));
-  const dc=document.querySelectorAll('#sec-deco .chip');
-  if(r.deco){dc.forEach(c=>c.classList.remove('disabled'));}
-  else{dc.forEach(c=>{c.classList.add('disabled');c.classList.remove('active');});const bp=[...dc].find(c=>chipVal(c)==='Bez panelu');if(bp)bp.classList.add('active');cfg.deco='Bez panelu';}
+  if(!ap){
+    const fv=document.querySelector('#sec-police .chip:not(.disabled)');
+    if(fv){fv.classList.add('active');cfg.police=chipVal(fv);}
+  } else {cfg.police=chipVal(ap);}
+  updateNosnostNote();
 }
 function selectChip(el,group){
   if(el.classList.contains('disabled'))return;
-  el.closest('.chips').querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');
-  const val=chipVal(el);
-  if(group==='police'){cfg.police=val;const m=val==='MDF';document.querySelectorAll('#sec-povrch .swatch-item').forEach(s=>m?s.classList.remove('disabled'):s.classList.add('disabled'));}
-  if(group==='deco')cfg.deco=val;
-  updateSummary();updatePrice();
+  const grpEl=group==='sirka'?document.getElementById('chips-sirka'):group==='hloubka'?document.getElementById('chips-hloubka'):el.closest('.chips');
+  if(grpEl)grpEl.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  if(group==='police'){cfg.police=chipVal(el);updateNosnostNote();}
+  if(group==='sirka'){cfg.sirka=el.textContent.trim();applyDimsRules(cfg.sirka);return;}
+  if(group==='hloubka') cfg.hloubka=el.textContent.trim();
+  updateSummary();
 }
-function selectSwatch(el,name){if(el.classList.contains('disabled'))return;document.querySelectorAll('.swatch-item').forEach(s=>s.classList.remove('active'));el.classList.add('active');cfg.povrch=name;updateSummary();}
-function toggleModule(key,price,cb){cb.checked?cfg.modules[key]=price:delete cfg.modules[key];updatePrice();updateSummary();}
-function updatePrice(){const b=SETS[cfg.set].base,e=Object.values(cfg.modules).reduce((a,v)=>a+v,0);document.getElementById('price-display').textContent='od\u00a0'+(b+e).toLocaleString('cs-CZ')+'\u00a0K\u010d';updateQtyTotal();}
-function updateQtyTotal(){const qty=parseInt(document.getElementById('qty-input').value)||1,b=SETS[cfg.set].base,e=Object.values(cfg.modules).reduce((a,v)=>a+v,0),el=document.getElementById('qty-total');el.textContent=qty>1?'= celkem od\u00a0'+((b+e)*qty).toLocaleString('cs-CZ')+'\u00a0K\u010d':'';updateSummary();}
+function toggleModule(key,cb){
+  cb.checked?cfg.modules[key]=true:delete cfg.modules[key];
+  updateSummary();
+}
 function updateSummary(){
-  const qty=parseInt(document.getElementById('qty-input')?.value)||1;
-  const ml={drawer1:'Drawer 1\u00d7',drawer3:'Drawer 3\u00d7',siderail:'Side Rail',closetrail:'Closet Rail',led:'LED'};
+  const ml={perfpanel:'Perforovaný panel',drawer:'Zásuvka',closetrail:'Closet Rail',siderail:'Boční lišta'};
   document.getElementById('sum-set').textContent='Set: '+cfg.set;
-  document.getElementById('sum-police').textContent='Police: '+cfg.police+(cfg.police==='MDF'?' \u00b7 '+cfg.povrch:'');
-  document.getElementById('sum-deco').textContent='Deco panel: '+(cfg.deco==='Bez panelu'?'bez':cfg.deco);
+  document.getElementById('sum-rozmery').textContent='Rozměry: '+cfg.sirka+' × '+cfg.hloubka+' · výška 1800 mm';
+  document.getElementById('sum-police').textContent='Police: '+cfg.police;
   const mk=Object.keys(cfg.modules),me=document.getElementById('sum-modules');
   if(me)me.textContent='Moduly: '+(mk.length>0?mk.map(k=>ml[k]).join(', '):'—');
 }
-applySetRules('Living Gallery');
+applySetRules('Workshop Organizer');
+applyDimsRules('900 mm');
 
 // Active tab highlight on scroll
 (function(){
-  const tabEls = document.querySelectorAll('.section-tab');
-  const secIds = ['volba-setu','konfigurator','technicka-spec','ke-stazeni'];
+  const tabEls=document.querySelectorAll('.section-tab');
+  const secIds=['volba-setu','konfigurator','technicka-spec','ke-stazeni'];
   function updateTabs(){
-    const scrollY = window.scrollY + 120;
-    let active = 0;
-    secIds.forEach((id,i)=>{
-      const el = document.getElementById(id);
-      if(el && el.getBoundingClientRect().top + window.scrollY <= scrollY) active = i;
-    });
-    tabEls.forEach((t,i)=>t.classList.toggle('active', i===active));
+    const scrollY=window.scrollY+120;let active=0;
+    secIds.forEach((id,i)=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top+window.scrollY<=scrollY)active=i;});
+    tabEls.forEach((t,i)=>t.classList.toggle('active',i===active));
   }
-  window.addEventListener('scroll', updateTabs, {passive:true});
+  window.addEventListener('scroll',updateTabs,{passive:true});
 })();
 </script>
 </body>
