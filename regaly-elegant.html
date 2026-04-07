@@ -60,7 +60,7 @@
       align-self: start;
     }
     .main-view {
-      width: 100%; flex: 1; background: #D8D8D8; border: 1px solid #C4C4C4;
+      width: 100%; aspect-ratio: 4/3; background: #D8D8D8; border: 1px solid #C4C4C4;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       font-size: 0.85rem; font-weight: 700; color: #999; text-transform: uppercase;
       letter-spacing: 0.08em; margin-bottom: 12px; position: relative;
@@ -92,10 +92,9 @@
     .set-select:focus { outline: none; border-color: #1A1A1A; }
     .info-section-label { font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.13em; color: #AAA; display: block; margin-bottom: 6px; }
 
-    .dims { display: flex; }
-    .dims + .dims { margin-top: 2px; }
-    .dim-item { text-align: center; padding: 6px 4px; background: #F8F8F8; border: 1px solid #EEE; flex: 1; }
-    .dim-item + .dim-item { border-left: none; }
+    .dims { display: flex; gap: 4px; }
+    .dims + .dims { margin-top: 4px; }
+    .dim-item { text-align: center; padding: 12px 8px; background: #F8F8F8; border: 1px solid #D0D0D0; flex: 1; }
     .dim-icon { font-size: 1.15rem; color: #555; display: block; margin-bottom: 1px; line-height: 1; }
     .dim-value { font-size: 0.84rem; font-weight: 800; display: block; word-break: break-word; }
     .dim-label { font-size: 0.6rem; color: #555; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -187,6 +186,13 @@
     .chip-vis.active .chip-text { color: #FFF; }
 
     html { scroll-behavior: smooth; }
+    .series-nav-strip { background: #F4F4F4; border-top: 2px solid #E0E0E0; padding: 28px max(48px, calc((100% - 1440px) / 2)); }
+    .series-nav-heading { font-size: 1.05rem; font-weight: 800; color: #1A1A1A; margin-bottom: 14px; letter-spacing: -0.01em; }
+    .series-nav-inner { display: flex; flex-direction: column; gap: 0; max-width: 280px; }
+    .series-nav-item { font-size: 0.84rem; font-weight: 700; color: #1A1A1A; text-decoration: none; padding: 9px 0; border-bottom: 1px solid #E0E0E0; transition: color 0.12s; }
+    .series-nav-inner .series-nav-item:first-child { border-top: 1px solid #E0E0E0; }
+    .series-nav-item:hover { color: #555; }
+    .series-nav-all { font-weight: 400; color: #888; font-size: 0.78rem; border-bottom: none !important; margin-top: 10px; }
 
     .section-tabs { display: flex; border-bottom: 2px solid #EBEBEB; margin-bottom: 24px; margin-top: 8px; }
     .section-tab { font-size: 0.76rem; font-weight: 700; color: #888; padding: 10px 16px 10px 0; text-decoration: none; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color 0.15s, border-color 0.15s; white-space: nowrap; }
@@ -247,23 +253,22 @@
       <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
       <div class="mega-menu">
         <div class="mega-col">
-          <h4>Regálové systémy</h4>
+          <h4><a href="regaly-rozcestnik.html" style="color:inherit;text-decoration:none;">Regálové systémy</a></h4>
           <a href="regaly-elegant.html">ELEGANT</a>
-          <a href="#">PRAKTIK</a>
+          <a href="regaly-praktik.html">PRAKTIK</a>
           <a href="#">HEAVY</a>
           <a href="#">DRUMY</a>
           <a href="#">FUTUR</a>
+          <a href="#">Doplňkový nábytek</a>
         </div>
         <div class="mega-col">
-          <h4>Ocelové profily</h4>
+          <h4><a href="#" style="color:inherit;text-decoration:none;">Ocelové profily</a></h4>
           <a href="#">Uzavřené</a>
           <a href="#">Otevřené</a>
           <a href="#">Speciální</a>
         </div>
         <div class="mega-col">
-          <h4>Ostatní</h4>
-          <a href="#">Kovový nábytek</a>
-          <a href="#">Zakázková kovovýroba</a>
+          <h4><a href="#" style="color:inherit;text-decoration:none;">Zakázková kovovýroba</a></h4>
         </div>
       </div>
     </div>
@@ -459,6 +464,17 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="series-nav-strip">
+  <p class="series-nav-heading">Další regálové řady</p>
+  <div class="series-nav-inner">
+    <a href="regaly-praktik.html" class="series-nav-item">PRAKTIK →</a>
+    <a href="#" class="series-nav-item">HEAVY →</a>
+    <a href="#" class="series-nav-item">DRUMY →</a>
+    <a href="#" class="series-nav-item">FUTUR →</a>
+    <a href="regaly-rozcestnik.html" class="series-nav-all">Všechny řady →</a>
   </div>
 </div>
 
