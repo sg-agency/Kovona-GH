@@ -60,14 +60,16 @@
       align-self: start;
     }
     .main-view {
-      width: 100%; aspect-ratio: 4/3; background: #D8D8D8; border: 1px solid #C4C4C4;
+      width: 100%; aspect-ratio: 3/2; background: #D8D8D8; border: 1px solid #C4C4C4;
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       font-size: 0.85rem; font-weight: 700; color: #999; text-transform: uppercase;
       letter-spacing: 0.08em; margin-bottom: 12px; position: relative;
     }
     .main-view-hint { position: absolute; bottom: 12px; font-size: 0.66rem; color: #BBB; font-weight: 400; text-transform: none; letter-spacing: 0; }
-    .thumbnails { display: flex; gap: 6px; width: 100%; margin-bottom: 16px; }
-    .thumb { flex: 1; aspect-ratio: 1; background: #CACACA; border: 1px solid #B8B8B8; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; font-weight: 600; color: #999; text-align: center; line-height: 1.3; padding: 4px; transition: border-color 0.15s; }
+    .thumb-strip { width: 100%; display: flex; align-items: stretch; margin-bottom: 16px; gap: 0; }
+    .thumbnails { display: flex; gap: 6px; flex: 1; overflow: hidden; flex-wrap: nowrap; margin-bottom: 0; }
+    .thumb-arrow { width: 30px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1rem; color: #888; background: #EBEBEB; border: 1px solid #C8C8C8; border-left: none; cursor: default; user-select: none; letter-spacing: 0; }
+    .thumb { flex: 0 0 calc(20% - 5px); aspect-ratio: 3/2; background: #CACACA; border: 1px solid #B8B8B8; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.58rem; font-weight: 600; color: #999; text-align: center; line-height: 1.3; padding: 4px; transition: border-color 0.15s; }
     .thumb:hover { border-color: #888; color: #555; }
     .thumb.active { border: 2px solid #444; color: #444; background: #C0C0C0; }
     .gallery-origin { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.14em; color: #AAA; font-weight: 700; }
@@ -250,7 +252,7 @@
   </div>
   <div class="nav-items">
     <div class="nav-item">
-      <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
+      <a href="produkty.html" class="nav-link">Produkty ▾</a>
       <div class="mega-menu">
         <div class="mega-col">
           <h4><a href="regaly-rozcestnik.html" style="color:inherit;text-decoration:none;">Regálové systémy</a></h4>
@@ -306,12 +308,15 @@
       </div>
       <span class="main-view-hint">Kliknutím na náhled se fotka změní</span>
     </div>
-    <div class="thumbnails">
-      <div class="thumb active" onclick="switchThumb('Pohled zepředu',this)">Pohled<br>zepředu</div>
-      <div class="thumb" onclick="switchThumb('Detail spoje',this)">Detail<br>spoje</div>
-      <div class="thumb" onclick="switchThumb('Reálné prostředí',this)">Reálné<br>prostředí</div>
-      <div class="thumb" onclick="switchThumb('Stagovaný záběr',this)">Stagovaný<br>záběr</div>
-      <div class="thumb" onclick="switchThumb('Deco panel — detail',this)">Deco panel<br>detail</div>
+    <div class="thumb-strip">
+      <div class="thumbnails">
+        <div class="thumb active" onclick="switchThumb('Pohled zepředu',this)">Pohled<br>zepředu</div>
+        <div class="thumb" onclick="switchThumb('Detail spoje',this)">Detail<br>spoje</div>
+        <div class="thumb" onclick="switchThumb('Reálné prostředí',this)">Reálné<br>prostředí</div>
+        <div class="thumb" onclick="switchThumb('Stagovaný záběr',this)">Stagovaný<br>záběr</div>
+        <div class="thumb" onclick="switchThumb('Deco panel — detail',this)">Deco panel<br>detail</div>
+      </div>
+      <div class="thumb-arrow">›</div>
     </div>
     <div class="gallery-origin">Vyrobeno v České republice · od roku 1904</div>
   </div>

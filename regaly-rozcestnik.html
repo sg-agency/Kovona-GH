@@ -39,11 +39,12 @@
 
     /* ===== HERO — text přímo na šedém podkladu ===== */
     .hero-container {
-      height: 640px;
+      height: 620px;
       background: #DCDCDC;
       display: flex;
-      align-items: flex-end;
-      padding: 0 max(56px, calc((100% - 1440px) / 2)) 56px;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 max(56px, calc((100% - 1440px) / 2));
       position: relative;
     }
     .hero-photo-label {
@@ -75,19 +76,20 @@
 
     /* ===== TABS ===== */
     .tabs-wrapper {
-      border-bottom: 1px solid #DDD;
-      background: #FFF;
-      position: sticky;
-      top: 80px;
-      z-index: 100;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.15);
+      z-index: 10;
     }
     .tabs { display: flex; padding: 0 max(56px, calc((100% - 1440px) / 2)); gap: 48px; }
     .tab { padding: 20px 0; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
-    .tab-title { display: block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #AAA; letter-spacing: 0.05em; }
-    .tab-sub { display: block; font-size: 0.72rem; font-weight: 500; color: #BBB; margin-top: 3px; }
+    .tab-title { display: block; font-size: 0.85rem; font-weight: 800; text-transform: uppercase; color: #555; letter-spacing: 0.05em; }
+    .tab-sub { display: block; font-size: 0.72rem; font-weight: 500; color: #888; margin-top: 3px; }
     .tab.active { border-bottom-color: #1A1A1A; }
     .tab.active .tab-title { color: #1A1A1A; }
-    .tab.active .tab-sub { color: #888; }
+    .tab.active .tab-sub { color: #444; }
 
     /* ===== PRODUCT CARDS — kompaktní ===== */
     .content-section { padding: 48px 56px 64px; max-width: 1440px; margin: 0 auto; }
@@ -232,7 +234,7 @@
     </div>
     <div class="nav-items">
       <div class="nav-item">
-        <a href="#" class="nav-link" onclick="return false">Produkty ▾</a>
+        <a href="produkty.html" class="nav-link">Produkty ▾</a>
         <div class="mega-menu">
           <div class="mega-col">
             <h4><a href="regaly-rozcestnik.html" style="color:inherit;text-decoration:none;">Regálové systémy</a></h4>
@@ -280,29 +282,27 @@
       <h1>Regály, které<br>přežijí generace</h1>
       <p>Od precizních interiérových systémů po robustní průmyslová řešení. Navrženo a&nbsp;vyrobeno v&nbsp;České republice s&nbsp;tradicí od roku 1904.</p>
     </div>
-  </section>
-
-  <!-- TABS -->
-  <div class="tabs-wrapper">
-    <div class="tabs">
-      <div class="tab active" data-tab="diy">
-        <span class="tab-title">Domácnost &amp; DIY</span>
-        <span class="tab-sub">Designové a hobby regály</span>
-      </div>
-      <div class="tab" data-tab="profi">
-        <span class="tab-title">Sklady &amp; Profi</span>
-        <span class="tab-sub">Obchody, archivy a dílny</span>
-      </div>
-      <div class="tab" data-tab="heavy">
-        <span class="tab-title">Průmysl &amp; Heavy</span>
-        <span class="tab-sub">Logistika a velkokapacitní sklady</span>
-      </div>
-      <div class="tab" data-tab="nabytek">
-        <span class="tab-title">Doplňkový nábytek</span>
-        <span class="tab-sub">Kovové stoly a&nbsp;židle</span>
+    <div class="tabs-wrapper">
+      <div class="tabs">
+        <div class="tab active" data-tab="diy">
+          <span class="tab-title">Domácnost &amp; DIY</span>
+          <span class="tab-sub">Designové a hobby regály</span>
+        </div>
+        <div class="tab" data-tab="profi">
+          <span class="tab-title">Sklady &amp; Profi</span>
+          <span class="tab-sub">Obchody, archivy a dílny</span>
+        </div>
+        <div class="tab" data-tab="heavy">
+          <span class="tab-title">Průmysl &amp; Heavy</span>
+          <span class="tab-sub">Logistika a velkokapacitní sklady</span>
+        </div>
+        <div class="tab" data-tab="nabytek">
+          <span class="tab-title">Doplňkový nábytek</span>
+          <span class="tab-sub">Kovové stoly a&nbsp;židle</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- PRODUCT CARDS -->
   <section class="content-section">
